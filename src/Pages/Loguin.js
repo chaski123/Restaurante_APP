@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import fondo from "../img/bg.svg";
 import usuario from "../img/avatar.svg";
 import "../css/style.css";
+import NavBar from "../Components/NavBarUser";
 
 const Loguin = () => {
   const inputs = document.querySelectorAll(".input");
@@ -57,51 +58,53 @@ const Loguin = () => {
   const handleChange = (e) =>{
       setUsers({...users, [e.target.name]: e.target.value})
     }
-  
+
   return (
     <>
-      <div className="container-css">
-        <div className="img">
-          <img src={fondo} alt="img fondo" />
+        <NavBar/>
+        <div className="bg-dark container-css">
+          <div className="img">
+            <img src={fondo} alt="img fondo" />
+          </div>
+          <div className="login-content">
+            <form
+              onSubmit={handleSubmit}
+            >
+              <img src={usuario} alt="avatar user" />
+              <h2 className="title">Welcome</h2>
+              <div className="input-div one">
+                <div className="i">
+                  <FontAwesomeIcon icon={faUser} />
+                </div>
+                <div className="div">
+                  <h5>Username</h5>
+                  <input type="text" 
+                  className="input" 
+                  name="user" 
+                  onChange={handleChange} 
+                  value={user}/>
+                </div>
+              </div>
+              <div className="input-div pass">
+                <div className="i">
+                  <FontAwesomeIcon icon={faLock} />
+                </div>
+                <div className="div">
+                  <h5>Password</h5>
+                  <input type="password" 
+                  className="input" 
+                  name="password" 
+                  onChange={handleChange}
+                  value={password}/>
+                </div>
+              </div>
+              <a href="##">Forgot Password?</a>
+              <input type="submit" className="btn-css" value="Login" />
+            </form>
+          </div>
         </div>
-        <div className="login-content">
-          <form
-            onSubmit={handleSubmit}
-          >
-            <img src={usuario} alt="avatar user" />
-            <h2 className="title">Welcome</h2>
-            <div className="input-div one">
-              <div className="i">
-                <FontAwesomeIcon icon={faUser} />
-              </div>
-              <div className="div">
-                <h5>Username</h5>
-                <input type="text" 
-                className="input" 
-                name="user" 
-                onChange={handleChange} 
-                value={user}/>
-              </div>
-            </div>
-            <div className="input-div pass">
-              <div className="i">
-                <FontAwesomeIcon icon={faLock} />
-              </div>
-              <div className="div">
-                <h5>Password</h5>
-                <input type="password" 
-                className="input" 
-                name="password" 
-                onChange={handleChange}
-                value={password}/>
-              </div>
-            </div>
-            <a href="##">Forgot Password?</a>
-            <input type="submit" className="btn-css" value="Login" />
-          </form>
-        </div>
-      </div>
     </>
+    
   );
 };
 
