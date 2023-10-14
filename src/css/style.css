@@ -151,66 +151,24 @@ a:hover{
 }
 .btn:hover{background-position: right;}
 
-/* HEADER -> HOMEPAGE */
-  .header-container {
-    background-color: #FFF;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  .header-container__img {
+/* HEADER */
+.header-container__img {
     width: 70px;
     cursor: pointer;
 	border-radius: 50%;
   }
 
   .hover-underline-animation {
-    display: inline-block;
+	display: inline-block;
 	padding: 10px;
-    position: relative;
+	position: relative;
 	font-size: 16px;
 	text-decoration: none;
 	color: #999;
   }
-  
-  .hover-underline-animation::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 3px;
-    bottom: 0;
-    left: 0;
-    background-color: #000;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-  }
 
-  .hover-underline-animation:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-
-  .header-nav,
   .header-login {
-    display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-  }
-
-  .header-login .IconUser {
-    width: 60px;
-    height: 60px;
-    color: #fff;
-    cursor: pointer;
-	border-radius: 50%;
+	display: none;
   }
 
   /* MAIN */
@@ -235,7 +193,6 @@ a:hover{
 	  }
 
 	  .main__description {
-		text-align: justify;
 		margin: 15px 0;
 		font-size: 20px;
 		letter-spacing: 1px;
@@ -248,33 +205,6 @@ a:hover{
 
 	/* MEDIAS-QUERYS */
 	@media (min-width: 768px) {
-		.header-container__user__mobile {
-		  display: none;
-		}
-	  
-		.header-login {
-		  display: block;
-		}
-	  
-		.header-container__img {
-		  width: 45px;
-		}
-	  
-		.header-login i {
-		  font-size: 28px;
-		  color: #fff;
-		}
-	  
-		.header-nav {
-		  display: block;
-		  justify-content: space-between;
-		}
-	  
-		.header-nav__link {
-		  text-decoration: none;
-		  margin-left: 10px;
-		  color: #fff;
-		}
 	  
 		.main-container {
 		  display: flex;
@@ -302,43 +232,52 @@ a:hover{
 		.main-container__img {
 		  width: 100%;
 		}
-	  
-		.gallery-container {
-		  flex-direction: row;
-		  flex-wrap: wrap;
-		  justify-content: space-around;
-		}
-	  
-		.gallery-container__img {
-		  width: 30%;
-		  margin-top: 0;
-		}
-	  
-		.contact__form {
-		  width: 80%;
-		}
-	  
-		.card__button {
-		  width: 45%;
-		  color: #fff;
-		  font-size: 14px;
-		}
-	  
-		.footer-container {
-		  flex-direction: row;
-		  align-items: center;
-		}
 	  }
 	  
 	@media (min-width: 1024px) {
-		.header-container__img {
-		  width: 65px;
-		}
-	  
-		.header-nav {font-size: 22px;}
-	  
-		.header-login i {font-size: 36px;}
-	  
+		.header-login {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			margin-right: 10px;
+		  }
+		
+		  .header-login .IconUser {
+			width: 60px;
+			height: 60px;
+			color: #fff;
+			cursor: pointer;
+			border-radius: 50%;
+		  }
+
+		.hover-underline-animation {
+			display: inline-block;
+			padding: 10px;
+			position: relative;
+			font-size: 16px;
+			text-decoration: none;
+			color: #999;
+		  }
+		  
+		  .hover-underline-animation::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			transform: scaleX(0);
+			height: 3px;
+			bottom: 0;
+			left: 0;
+			background-color: #000;
+			transform-origin: bottom right;
+			transition: transform 0.25s ease-out;
+		  }
+
+		  .hover-underline-animation:hover::after {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		  }
+
 		.main-container {justify-content: space-around;}
 	  
 		.main-container__titulo {font-size: 75px;}
@@ -349,32 +288,6 @@ a:hover{
 		  display: block;
 		  width: 700px;
 		}
-	  
-		.gallery-container__img {
-		  height: 630px;
-		  width: 30%;
-		  margin-top: 15px;
-		}
-	  
-		.contact__form {width: 800px;}
-	  
-		.contact__button {width: 300px;}
-	
-		.card{
-		  width: 45%;
-		  margin: 5px;
-		}
-	
-		.cards-container{
-		  display: flex;
-		  flex-wrap: wrap;
-	
-		}
-		.card__titulo {font-size: 34px;}
-	  
-		.card__parrafo {font-size: 22px;}
-	  
-		.card__button {font-size: 18px;}
 	  }
 
 	  /* RESPONSIVE LOGUIN */
