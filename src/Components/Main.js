@@ -15,7 +15,7 @@ const Main = () => {
               compartir el mejor momento con nuestros amigos, disfutar de una incrible comida y convertirlo en un recuerdo unico para ti. Así era cuando abrió la primera tienda
               Entre Amigos en 1991, y así continúa siendo hoy.
             </p>
-            <div className="container container_btn">
+            <div className="container_btn">
               <Link className="btn btn-outline-success me-2">Pedir Ahora</Link>
               <Link className="btn btn-outline-success">Nuestro Menu</Link>
             </div>
