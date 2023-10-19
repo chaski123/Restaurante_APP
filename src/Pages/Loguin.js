@@ -98,7 +98,7 @@ const Loguin = () => {
                   value={password}/>
                 </div>
               </div>
-              <a href="##">Forgot Password?</a>
+              <a className= "a" href="##">Forgot Password?</a>
               <input type="submit" className="btn-css" value="Login" />
             </form>
           </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import NavBarUser from "../Components/NavBarUser";
 
 const Menu = ({ items }) => {
   return (
@@ -15,6 +14,7 @@ const Menu = ({ items }) => {
                 <h4 className="price">${price}</h4>
               </header>
               <p className="item-text">{desc}</p>
+              <button className="btn btn-outline-success mt-1">Agregar</button>
             </div>
           </article>
         );

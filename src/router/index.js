@@ -4,7 +4,6 @@ import SignUp from '../Pages/SignUp'
 import HomePage from '../Pages/HomePage'
 import Error404 from '../Pages/Error404'
 import Menu from "../Pages/Menu";
-import items from "../Components/data"
 
 
 export const router = createBrowserRouter([

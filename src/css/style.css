@@ -121,7 +121,7 @@ form{
 .input-div.pass{
 	margin-bottom: 4px;
 }
-a{
+.a{
 	display: block;
 	text-align: right;
 	text-decoration: none;
@@ -129,8 +129,9 @@ a{
 	font-size: 0.9rem;
 	transition: .3s;
 }
-a:hover{
-	color: #38d39f;
+
+.a:hover{
+	color: #006241;
 }
 .btn-css{
 	display: block;
@@ -235,16 +236,11 @@ a:hover{
 	  .section {
 		width: 90vw;
 		margin: 0 auto;
-		max-width: 1170px;
+		max-width: 1400px;
 		background: hsl(210, 36%, 96%);
   		color: hsl(209, 61%, 16%);
 	  }
 	  
-	  @media screen and (min-width: 992px) {
-		.section {
-		  width: 95vw;
-		}
-	  }
 	  .menu {
 		padding: 5rem 0;
 	  }
@@ -331,26 +327,75 @@ a:hover{
 		margin-bottom: 0;
 		padding-top: 1rem;
 	  }
-	  
-	  @media screen and (min-width: 768px) {
+
+/* footer */
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    padding: 25px 25px;
+	align-items: center;
+    justify-content: space-between;
+	color: #006241;
+  }
+  
+  .footer-container__login {
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    margin: 15px 0px;
+	cursor: pointer;
+  }
+  
+  .footer-container__redes-sociales a {
+    padding: 0 15px;
+    font-size: 28px;
+	cursor: pointer;
+	color: #006241;
+  }
+  
+  .footer-container__contacto {
+    font-size: 22px;
+    margin: 10px 0px;
+	cursor: pointer;
+  }
+  
+  .footer-container__link,
+  .footer-container__redes-sociales,
+  .footer-container__contacto-link {
+	color: #006241;
+    text-decoration: none;
+  }
+
+  .whatsapp:hover {
+	color: #25d366;
+  }
+  .facebook:hover {
+	color: #4267b2;
+  }
+  .twitter:hover {
+	color: #1da1f2;
+  }
+
+	/* Menu Responsive  */
+	@media screen and (min-width: 768px) {
 		.menu-item {
-		  grid-template-columns: 225px 1fr;
-		  gap: 0 1.25rem;
-		  max-width: 40rem;
+			grid-template-columns: 225px 1fr;
+			gap: 0 1.25rem;
+			max-width: 40rem;
 		}
 		.photo {
-		  height: 175px;
+			height: 175px;
 		}
-	  }
-	  @media screen and (min-width: 1200px) {
+	}
+	@media screen and (min-width: 1200px) {
 		.section-center {
-		  width: 95vw;
-		  grid-template-columns: 1fr 1fr;
+			width: 95vw;
+			grid-template-columns: 1fr 1fr;
 		}
 		.photo {
-		  height: 150px;
+			height: 150px;
 		}
-	  }
+	}
 
 	/* MEDIAS-QUERYS */
 	@media (min-width: 768px) {
@@ -381,7 +426,11 @@ a:hover{
 		.main-container__img {
 		  width: 100%;
 		}
-	  }
+
+		.footer-container {
+			justify-content: space-around;
+		  }
+	}
 	  
 	@media (min-width: 1024px) {
 		.header-login {
@@ -417,7 +466,7 @@ a:hover{
 			height: 3px;
 			bottom: 0;
 			left: 0;
-			background-color: #000;
+			background-color: #1da1f2;
 			transform-origin: bottom right;
 			transition: transform 0.25s ease-out;
 		  }
@@ -437,9 +486,13 @@ a:hover{
 		  display: block;
 		  width: 700px;
 		}
+
+		.Home{
+			margin-left: 15px;
+		  }
 	  }
 
-	  /* RESPONSIVE LOGUIN */
+	/* RESPONSIVE LOGUIN */
 	@media screen and (max-width: 1050px){
 		.container-css{
 			grid-gap: 5rem;

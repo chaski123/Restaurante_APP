@@ -21,11 +21,11 @@ const NavBarUser = () => {
           </button>
           <div className="collapse navbar-collapse " id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <Link to="/" className='header-nav__link hover-underline-animation ms-4'>HOME</Link>
+              <Link to="/" className='header-nav__link hover-underline-animation Home'>HOME</Link>
               <Link to="/menu" className='header-nav__link hover-underline-animation'>MENUS</Link>
               <Link to="/contacto" className='header-nav__link hover-underline-animation'>PEDIDOS</Link>
-              <Link to="/loguin" className='header-nav__link hover-underline-animation'>LOGUIN</Link>
-              <Link to="/sign-up" className='header-nav__link hover-underline-animation'>SIGNUP</Link>
+              <Link to="/loguin" className='header-nav__link hover-underline-animation'>INGRESAR</Link>
+              <Link to="/sign-up" className='header-nav__link hover-underline-animation'>REGISTRARSE</Link>
             </ul>
           </div>
         </div>

@@ -6,12 +6,12 @@ import Menu from "./Menu";
 import Categories from "../Components/Categories";
 import items from "../Components/data"
 import logo from "../img/MenuLogo.png"
+import Footer from "../Components/Footer";
 
-
-const allCategories = ["all", ...new Set(items.map((item) => item.category))];
+const allCategories = ["Todo", ...new Set(items.map((item) => item.category))];
 
 const HomePage = () => {
-  const userAdmin = false
+  const userAdmin = true
 
   const [menuItems, setMenuItems] = useState(items);
   const [activeCategory, setActiveCategory] = useState("");
@@ -19,7 +19,7 @@ const HomePage = () => {
 
   const filterItems = (category) => {
     setActiveCategory(category);
-    if (category === "all") {
+    if (category === "Todo") {
       setMenuItems(items);
       return;
     }
@@ -43,6 +43,7 @@ const HomePage = () => {
         />
         <Menu items={menuItems}/>
       </section>
+      <Footer/>
     </>
   );
 };
