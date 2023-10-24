@@ -6,7 +6,6 @@ import img5 from '../img/Item-5.jpeg'
 import img6 from '../img/Item-6.jpeg'
 import img7 from '../img/Item-7.jpeg'
 import img8 from '../img/Item-8.jpeg'
-import img9 from '../img/Item-9.jpeg'
 import img10 from '../img/item-10.jpeg'
 
 const menu = [
@@ -80,14 +79,6 @@ const menu = [
       category: 'Almuerzo',
       price: 16.99,
       img: img10,
-      desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
-    },
-    {
-      id: 10,
-      title: 'Compartiendo Momentos Dulces',
-      category: 'Batidos',
-      price: 22.45,
-      img: img9,
       desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
     }
   ];

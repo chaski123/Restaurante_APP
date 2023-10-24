@@ -1,12 +1,13 @@
 import React from "react";
 import Logo from '../img/Logo restaurante circular negro.png'
 import { Link } from "react-router-dom";
+import 'animate.css'
 
 const Main = () => {
     return (
       <div>
         <main className="main-container">
-          <div className="main-container__principal">
+          <div className="main-container__principal animate__animated animate__fadeInLeftBig">
             <h1 className="main-container__titulo">
             Comida <span>Deliciosa</span> momentos <span>Deliciosos.</span>
             </h1>
@@ -21,7 +22,7 @@ const Main = () => {
             </div>
           </div>
           <div className="main-container__logo">
-              <img className="main-container__img" src={Logo} alt="Plato" /> 
+              <img className="main-container__img animate__animated animate__fadeInRightBig" src={Logo} alt="Logo Restaurante" /> 
           </div>
         </main>
       </div>
