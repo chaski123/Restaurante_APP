@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import fondo from "../img/bg.svg";
 import usuario from "../img/avatar.svg";
 import "../css/style.css";
-import NavBar from "../Components/NavBarUser";
+import NavBar from "../Components/NavBar";
 
 const Loguin = () => {
   const inputs = document.querySelectorAll(".input");

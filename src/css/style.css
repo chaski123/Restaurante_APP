@@ -429,7 +429,7 @@ form{
 
 		.footer-container {
 			justify-content: space-around;
-		  }
+		}
 	}
 	  
 	@media (min-width: 1024px) {

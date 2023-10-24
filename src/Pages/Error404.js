@@ -1,6 +1,6 @@
 import React from 'react'
 import Error from '../img/Error404-2.png';
-import NavBar from '../Components/NavBarUser';
+import NavBar from '../Components/NavBar';
 
 const Error404 = () => {
   return (
