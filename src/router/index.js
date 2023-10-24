@@ -4,6 +4,7 @@ import SignUp from '../Pages/SignUp'
 import HomePage from '../Pages/HomePage'
 import Error404 from '../Pages/Error404'
 import Menu from "../Pages/Menu";
+import ContactoForm from "../Pages/ContactoForm";
 
 
 export const router = createBrowserRouter([
@@ -25,6 +26,11 @@ export const router = createBrowserRouter([
     {
         path: '/menu',
         element: <Menu/>,
+        errorElement: <Error404/>
+    },
+    {
+        path: '/contacto',
+        element: <ContactoForm/>,
         errorElement: <Error404/>
     }
 ])

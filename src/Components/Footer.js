@@ -24,7 +24,7 @@ const Footer = () =>{
             </a>
         </div>
         <div className="footer-container__contacto">
-            <Link to={'/contacto'} className='footer-container__contacto-link'/>Contactanos Aqui
+            <Link to={'/contacto'} className='footer-container__contacto-link'>Contactanos Aqui</Link>
         </div>
     </footer>
     )
