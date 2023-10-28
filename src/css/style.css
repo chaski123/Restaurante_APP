@@ -176,6 +176,18 @@ form {
   display: none;
 }
 
+/* Grid Users */
+.grid-container-users {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1600px;
+  padding: 40px 10px;
+  margin: 20px auto;
+  text-align: justify;
+  background-color: #CD5C5C;
+}
+
 /* Grid-Images */
 .images-grid {
   background: #d1dedd;
@@ -415,7 +427,6 @@ p {
   padding: 25px 25px;
   align-items: center;
   justify-content: space-between;
-  color: #006241;
 }
 
 .footer-container__login {
@@ -430,7 +441,7 @@ p {
   padding: 0 15px;
   font-size: 28px;
   cursor: pointer;
-  color: #006241;
+  color: #d1dedd;
 }
 
 .footer-container__contacto {
@@ -442,10 +453,14 @@ p {
 .footer-container__link,
 .footer-container__redes-sociales,
 .footer-container__contacto-link {
-  color: #006241;
+  color: #d1dedd;
   text-decoration: none;
 }
 
+.footer-container__link:hover,
+.footer-container__contacto-link:hover{
+  color: #1da1f2;
+}
 .whatsapp:hover {
   color: #25d366;
 }
@@ -755,4 +770,26 @@ p {
 		display: block;
 		margin: 0 20px;
 	}
+}
+
+
+/* COlores */
+.icono-personalizado-delete {
+  color: #b70e21 !important;
+}
+
+.icono-personalizado-success{
+  color: #25d366 !important;
+}
+
+.List-icon{
+  color: #000 !important;
+}
+
+.bg-chip{
+  background-color: #000 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 5px !important;
+  margin: 10px 5px !important;
 }

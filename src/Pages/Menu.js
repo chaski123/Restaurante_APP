@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import items from "../Components/data";
+import items from "../data/data";
 import logo from "../img/MenuLogo.png";
 import Categories from "../Components/Categories";
 import NavBar from "../Components/NavBar";

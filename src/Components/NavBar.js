@@ -5,7 +5,7 @@ import userAdmin from '../img/USER.png'
 import UserCliente from "../img/userLogoNavBar.jpg";
 
 const NavBar = () => {
-  const userAd = false
+  const userAd = true
   return (
     (userAd ? <nav className="navbar navbar-expand-lg bg-dark ">
     <div className="container-fluid">
@@ -26,7 +26,7 @@ const NavBar = () => {
           <Link to="/" className='header-nav__link hover-underline-animation Home'>HOME</Link>
           <Link to="/menu" className='header-nav__link hover-underline-animation'>MENUS</Link>
           <Link to="/pedidos" className='header-nav__link hover-underline-animation'>PEDIDOS</Link>
-          <Link to="##" className='header-nav__link hover-underline-animation'>USUARIOS</Link>
+          <Link to="/usuarios" className='header-nav__link hover-underline-animation'>USUARIOS</Link>
         </ul>
       </div>
     </div>
