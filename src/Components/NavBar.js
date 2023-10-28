@@ -54,7 +54,7 @@ const NavBar = () => {
               <Link to="/" className='header-nav__link hover-underline-animation Home'>HOME</Link>
               <Link to="/menu" className='header-nav__link hover-underline-animation'>MENUS</Link>
               <Link to="/carrito" className='header-nav__link hover-underline-animation'>CARRITO</Link>
-              <Link to="/loguin" className='header-nav__link hover-underline-animation'>INGRESAR</Link>
+              <Link to="/login" className='header-nav__link hover-underline-animation'>INGRESAR</Link>
               <Link to="/sign-up" className='header-nav__link hover-underline-animation'>REGISTRARSE</Link>
             </ul>
           </div>

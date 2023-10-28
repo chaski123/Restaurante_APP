@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from '../img/Logo restaurante circular negro.png'
+import Logo from '../img/LogoRestaurante.png'
 import { Link } from "react-router-dom";
 import 'animate.css'
 
@@ -17,8 +17,8 @@ const Main = () => {
               Entre Amigos en 1991, y así continúa siendo hoy.
             </p>
             <div className="container_btn">
-              <Link className="btn btn-outline-success me-2">Pedir Ahora</Link>
-              <Link className="btn btn-outline-success">Nuestro Menu</Link>
+              <Link className="btn btn-success me-2">Pedir Ahora</Link>
+              <Link className="btn btn-success">Nuestro Menu</Link>
             </div>
           </div>
           <div className="main-container__logo">

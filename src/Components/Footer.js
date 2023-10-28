@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Whatsapp } from 'react-bootstrap-icons';
+import { Facebook, Twitter, Whatsapp, BoxArrowInRight, PersonFill } from 'react-bootstrap-icons';
 
 const Footer = () =>{
     const whatsappURL = 'https://tu-url-de-whatsapp.com';
@@ -9,8 +9,8 @@ const Footer = () =>{
     return(
     <footer className="footer-container bg-dark">
         <div className="footer-container__login">
-        <Link to={'/loguin'} className="footer-container__link">Ingresar</Link>
-        <Link to={'/sign-up'} className="footer-container__link">Registrarse</Link>
+        <Link to={'/login'} className="footer-container__link"><PersonFill className="me-1"/>Ingresar</Link>
+        <Link to={'/sign-up'} className="footer-container__link"><BoxArrowInRight className="me-1"/>Registrarse</Link>
         </div>
         <div className="footer-container__redes-sociales">
             <a href={whatsappURL} target="_blank" rel="noopener noreferrer">

@@ -7,7 +7,7 @@ import usuario from "../img/avatar.svg";
 import "../css/style.css";
 import NavBar from "../Components/NavBar";
 
-const Loguin = () => {
+const Login = () => {
   const inputs = document.querySelectorAll(".input");
   const [users, setUsers] = useState({
     user: '',
@@ -108,4 +108,4 @@ const Loguin = () => {
   );
 };
 
-export default Loguin;
+export default Login;

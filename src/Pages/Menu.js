@@ -36,7 +36,7 @@ const Menu = () => {
           activeCategory={activeCategory}
           filterItems={filterItems}
         />
-        <div className="section-center p-5">
+        <div className="section-center">
           {menuItems.map((item) => {
             // Cambie el'items' por 'menuItems'
             const { id, title, img, desc, price } = item;
