@@ -23,7 +23,7 @@ const NavBar = () => {
       </button>
       <div className="collapse navbar-collapse " id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <Link to="/" className='header-nav__link hover-underline-animation Home'>HOME</Link>
+          <Link to="/" className='header-nav__link hover-underline-animation Home'>INICIO</Link>
           <Link to="/menu" className='header-nav__link hover-underline-animation'>MENUS</Link>
           <Link to="/pedidos" className='header-nav__link hover-underline-animation'>PEDIDOS</Link>
           <Link to="/usuarios" className='header-nav__link hover-underline-animation'>USUARIOS</Link>
@@ -51,7 +51,7 @@ const NavBar = () => {
           </button>
           <div className="collapse navbar-collapse " id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <Link to="/" className='header-nav__link hover-underline-animation Home'>HOME</Link>
+              <Link to="/" className='header-nav__link hover-underline-animation Home'>INICIO</Link>
               <Link to="/menu" className='header-nav__link hover-underline-animation'>MENUS</Link>
               <Link to="/carrito" className='header-nav__link hover-underline-animation'>CARRITO</Link>
               <Link to="/login" className='header-nav__link hover-underline-animation'>INGRESAR</Link>

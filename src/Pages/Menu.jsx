@@ -22,10 +22,11 @@ const Menu = () => {
     setMenuItems(newItems);
   };
 
+  const userAdmin = true;
   return (
     <>
       <NavBar />
-      <section className="menu section">
+      {userAdmin === true ? (<section className="menu section">
         <div className="title">
           <img src={logo} alt="logo restaurante" className="logo" />
           <h2>Menu List</h2>
@@ -49,16 +50,57 @@ const Menu = () => {
                     <h4 className="price">${price}</h4>
                   </header>
                   <p className="item-text">{desc}</p>
-                  <button className="btn btn-outline-success mt-1">
-                    Agregar
-                  </button>
+                    <div className="mt-3">
+                      <button className="btn btn-warning me-2">
+                        Editar
+                      </button>
+                      <button className="btn btn-danger">
+                        Eliminar
+                      </button>
+                    </div>
                 </div>
               </article>
             );
           })}
         </div>
-      </section>
-      <Footer/>
+      </section>)
+      :
+      (<section className="menu section">
+        <div className="title">
+          <img src={logo} alt="logo restaurante" className="logo" />
+          <h2>Menu List</h2>
+          <div className="underline"></div>
+        </div>
+        <Categories
+          categories={categories}
+          activeCategory={activeCategory}
+          filterItems={filterItems}
+        />
+        <div className="section-center">
+          {menuItems.map((item) => {
+            // Cambie el'items' por 'menuItems'
+            const { id, title, img, desc, price } = item;
+            return (
+              <article key={id} className="menu-item">
+                <img src={img} alt={title} className="photo" />
+                <div className="item-info">
+                  <header>
+                    <h4>{title}</h4>
+                    <h4 className="price">${price}</h4>
+                  </header>
+                  <p className="item-text">{desc}</p>
+                    <div className="mt-3">
+                      <button className="btn btn-seuccess">
+                        Agregar
+                      </button>
+                    </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>)}
+      <Footer />
     </>
   );
 };

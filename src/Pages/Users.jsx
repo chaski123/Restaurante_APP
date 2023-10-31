@@ -8,8 +8,12 @@ const Users = () => {
   return (
     <>
         <NavBar/>
+        <div className="title mt-4">
+          <h2>Lista De Usuarios</h2>
+          <div className="underline-users"></div>
+        </div>
         <div className="grid-container-users">
-            <CardUser/>
+          <CardUser />
         </div>
         <Footer/>
     </>
