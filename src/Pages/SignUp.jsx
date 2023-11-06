@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2';
 import fondo from "../img/bg.svg";
 import usuario from "../img/avatar.svg";
 import "../css/style.css";
 import NavBar from "../Components/NavBar";
+import {FaUser, FaLock} from 'react-icons/fa';
+import {MdEmail} from 'react-icons/md'
 
 const Loguin = () => {
   const inputs = document.querySelectorAll(".input");
@@ -76,7 +76,7 @@ const Loguin = () => {
             <h2 className="title">Sign-Up</h2>
             <div className="input-div one">
               <div className="i">
-                <FontAwesomeIcon icon={faUser} />
+                <FaUser/>
               </div>
               <div className="div">
                 <h5>Username</h5>
@@ -89,7 +89,7 @@ const Loguin = () => {
             </div>
             <div className="input-div one">
               <div className="i">
-                <FontAwesomeIcon icon={faUser} />
+               <FaUser/>
               </div>
               <div className="div">
                 <h5>Lastname</h5>
@@ -102,7 +102,7 @@ const Loguin = () => {
             </div>
             <div className="input-div one">
               <div className="i">
-                <FontAwesomeIcon icon={faEnvelope} />
+                <MdEmail/>
               </div>
               <div className="div">
                 <h5>Email</h5>
@@ -115,7 +115,7 @@ const Loguin = () => {
             </div>
             <div className="input-div pass">
               <div className="i">
-                <FontAwesomeIcon icon={faLock} />
+               <FaLock/>
               </div>
               <div className="div">
                 <h5>Password</h5>

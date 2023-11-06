@@ -5,7 +5,7 @@ import userAdmin from '../img/USER.png'
 import UserCliente from "../img/userLogoNavBar.jpg";
 
 const NavBar = () => {
-  const userAd = true
+  const userAd = false
   return (
     (userAd ? <nav className="navbar navbar-expand-lg bg-dark ">
     <div className="container-fluid">

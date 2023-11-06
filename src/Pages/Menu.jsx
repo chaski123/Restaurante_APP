@@ -4,6 +4,9 @@ import logo from "../img/MenuLogo.png";
 import Categories from "../Components/Categories";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
+import {FaEdit} from 'react-icons/fa';
+import {TiDelete} from 'react-icons/ti';
+import {BsCartPlusFill} from 'react-icons/bs'
 
 const allCategories = ["Todo", ...new Set(items.map((item) => item.category))];
 
@@ -22,7 +25,7 @@ const Menu = () => {
     setMenuItems(newItems);
   };
 
-  const userAdmin = true;
+  const userAdmin = false;
   return (
     <>
       <NavBar />
@@ -52,9 +55,11 @@ const Menu = () => {
                   <p className="item-text">{desc}</p>
                     <div className="mt-3">
                       <button className="btn btn-warning me-2">
+                      <FaEdit className="fs-5 me-1"/>
                         Editar
                       </button>
                       <button className="btn btn-danger">
+                      <TiDelete className="fs-5 me-1"/>
                         Eliminar
                       </button>
                     </div>
@@ -90,8 +95,8 @@ const Menu = () => {
                   </header>
                   <p className="item-text">{desc}</p>
                     <div className="mt-3">
-                      <button className="btn btn-seuccess">
-                        Agregar
+                      <button className="btn btn-success">
+                      <BsCartPlusFill className="text-white fs-4"/>
                       </button>
                     </div>
                 </div>
