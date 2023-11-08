@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import items from "../data/data";
 import logo from "../img/MenuLogo.png";
 import Categories from "../Components/Categories";
-import NavBar from "../Components/NavBar";
+import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import {FaEdit} from 'react-icons/fa';
 import {TiDelete} from 'react-icons/ti';
@@ -28,7 +28,7 @@ const Menu = () => {
   const userAdmin = false;
   return (
     <>
-      <NavBar />
+      <Header />
       {userAdmin === true ? (<section className="menu section">
         <div className="title">
           <img src={logo} alt="logo restaurante" className="logo" />

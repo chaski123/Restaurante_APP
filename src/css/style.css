@@ -435,7 +435,7 @@ p {
 /* footer */
 .footer-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 25px 25px;
   align-items: center;
   justify-content: space-between;
@@ -473,14 +473,25 @@ p {
 .footer-container__contacto-link:hover{
   color: #1da1f2;
 }
+.whatsapp, .facebook, .twitter, .instagram{
+  transition: .8s;
+}
+
 .whatsapp:hover {
   color: #25d366;
+  transform: rotateY(360deg);
 }
 .facebook:hover {
   color: #4267b2;
+  transform: rotateY(360deg);
 }
 .twitter:hover {
   color: #1da1f2;
+  transform: rotateY(360deg);
+}
+.instagram:hover {
+  color: #d6249f;
+  transform: rotateY(360deg);
 }
 
 /* Form Contacto */
@@ -665,7 +676,6 @@ p {
   }
 
   .footer-container {
-	flex-direction: row;
     justify-content: space-around;
   }
 }
@@ -685,6 +695,11 @@ p {
     color: #fff;
     cursor: pointer;
     border-radius: 50%;
+    transition: .3s;
+  }
+
+  .IconUser:hover{
+    scale: 1.2;
   }
 
   .hover-underline-animation {

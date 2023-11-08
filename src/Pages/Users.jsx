@@ -1,13 +1,13 @@
 import React from "react";
 import Footer from '../Components/Footer'
-import NavBar from "../Components/NavBar";
+import Header from "../Components/Header";
 import CardUser from "../Components/CardUser";
 
 const Users = () => {
       
   return (
     <>
-        <NavBar/>
+        <Header/>
         <div className="title mt-4">
           <h2>Lista De Usuarios</h2>
           <div className="underline-users"></div>

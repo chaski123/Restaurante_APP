@@ -1,6 +1,6 @@
 import React from "react";
 import "animate.css";
-import NavBar from "../Components/NavBar";
+import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { FaLocationDot, FaPhone, FaGlobe } from "react-icons/fa6";
 import { GrMail } from "react-icons/gr";
@@ -11,7 +11,7 @@ const ContactoForm = () => {
   };
   return (
     <>
-      <NavBar />
+      <Header />
       <div className="body-form ">
         <div className="content animate__animated animate__bounce">
           <h1 className="logo_contact">

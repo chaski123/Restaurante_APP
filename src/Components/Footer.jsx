@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {BiLogIn} from 'react-icons/bi'
-import {BsFillPersonFill, BsWhatsapp, BsFacebook, BsTwitter} from 'react-icons/bs'
+import {BsFillPersonFill, BsWhatsapp, BsFacebook, BsTwitter, BsInstagram} from 'react-icons/bs'
 
 const Footer = () =>{
-    const whatsappURL = 'https://tu-url-de-whatsapp.com';
-    const facebookURL = 'https://tu-url-de-facebook.com';
-    const twitterURL = 'https://tu-url-de-twitter.com';
+    const whatsappURL = 'https://www.whatsapp.com/';
+    const facebookURL = 'https://www.facebook.com/';
+    const twitterURL = 'https://twitter.com/';
+    const instagramURL = 'https://instagram.com/';
     return(
     <footer className="footer-container bg-dark">
         <div className="footer-container__login">
@@ -26,6 +27,9 @@ const Footer = () =>{
             </a>
             <a href={twitterURL} target="_blank" rel="noopener noreferrer">
                 <BsTwitter className="twitter"/>
+            </a>
+            <a href={instagramURL} target="_blank" rel="noopener noreferrer">
+                <BsInstagram className="instagram"/>
             </a>
         </div>
         <div className="footer-container__contacto">

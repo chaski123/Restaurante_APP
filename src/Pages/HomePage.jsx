@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../Components/NavBar";
+import Header from "../Components/Header";
 import Main from "../Components/Main";
 import Footer from "../Components/Footer";
 import GridImages from "../Components/GridImages";
@@ -8,7 +8,7 @@ const HomePage = () => {
 
   return (
     <>
-      <NavBar/>
+      <Header/>
       <Main/>
       <GridImages/>
       <Footer/>

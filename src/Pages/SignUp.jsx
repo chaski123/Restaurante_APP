@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import fondo from "../img/bg.svg";
 import usuario from "../img/avatar.svg";
 import "../css/style.css";
-import NavBar from "../Components/NavBar";
+import Header from "../Components/Header";
 import {FaUser, FaLock} from 'react-icons/fa';
 import {MdEmail} from 'react-icons/md'
 
@@ -63,7 +63,7 @@ const Loguin = () => {
 
   return (
     <>
-      <NavBar/>
+      <Header/>
       <div className="bg-dark container-css">
         <div className="img">
           <img src={fondo} alt="img fondo" />
@@ -131,7 +131,6 @@ const Loguin = () => {
         </div>
       </div>
     </>
-    
   );
 };
 
