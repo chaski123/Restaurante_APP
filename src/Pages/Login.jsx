@@ -5,6 +5,7 @@ import usuario from "../img/avatar.svg";
 import "../css/style.css";
 import {FaUser, FaLock} from 'react-icons/fa'
 import { Link } from "react-router-dom";
+import { loginFetch } from "../api/loginFetch";
 
 const Login = () => {
   const inputs = document.querySelectorAll(".input");
@@ -32,7 +33,7 @@ const Login = () => {
     input.addEventListener("blur", blurFunc);
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if(!email.trim() || !password.trim()){
@@ -52,6 +53,13 @@ const Login = () => {
       icon: 'success',
       confirmButtonText: 'OK'
     })
+ 
+    try{
+      const {access} = await loginFetch(users)
+      console.log(access)
+    }catch(error){
+      console.log(error) 
+    }
   };
 
   const handleChange = (e) =>{
