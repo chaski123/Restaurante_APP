@@ -5,7 +5,6 @@ import userAdmin from "../img/USER.png";
 import UserCliente from "../img/userLogoNavBar.jpg";
 import {MdShoppingBasket, MdFastfood} from 'react-icons/md'
 import {AiFillHome} from 'react-icons/ai'
-import {BiLogIn} from 'react-icons/bi'
 import {BsFillPersonFill} from 'react-icons/bs'
 
 const NavBar = () => {
@@ -106,13 +105,6 @@ const NavBar = () => {
             >
             <BsFillPersonFill className="fs-3 me-1 pb-1"/>
               INGRESAR
-            </Link>
-            <Link
-              to="/sign-up"
-              className="header-nav__link hover-underline-animation"
-            >
-            <BiLogIn className="fs-3 me-1 pb-1"/>
-              REGISTRARSE
             </Link>
           </ul>
         </div>

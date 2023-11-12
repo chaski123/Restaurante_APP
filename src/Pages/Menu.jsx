@@ -25,7 +25,7 @@ const Menu = () => {
     setMenuItems(newItems);
   };
 
-  const userAdmin = false;
+  const userAdmin = true;
   return (
     <>
       <Header />

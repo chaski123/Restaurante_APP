@@ -3,17 +3,17 @@ import Swal from 'sweetalert2';
 import fondo from "../img/bg.svg";
 import usuario from "../img/avatar.svg";
 import "../css/style.css";
-import Header from "../Components/Header";
 import {FaUser, FaLock} from 'react-icons/fa'
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const inputs = document.querySelectorAll(".input");
   const [users, setUsers] = useState({
-    user: '',
+    email: '',
     password: ''
   })
   //Desestructuring
-  const {user, password} = users
+  const {email, password} = users
   
   function focusFunc() {
     let parent = this.parentNode.parentNode;
@@ -35,7 +35,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(!user.trim() || !password.trim()){
+    if(!email.trim() || !password.trim()){
       Swal.fire({
         title: 'Error!',
         text: 'Complete todos los campos',
@@ -60,7 +60,6 @@ const Login = () => {
 
   return (
     <>
-        <Header/>
         <div className="bg-dark container-css">
           <div className="img">
             <img src={fondo} alt="img fondo" />
@@ -76,12 +75,12 @@ const Login = () => {
                   <FaUser/>
                 </div>
                 <div className="div">
-                  <h5>Username</h5>
+                  <h5>Email</h5>
                   <input type="text" 
                   className="input" 
-                  name="user" 
+                  name="email" 
                   onChange={handleChange} 
-                  value={user}/>
+                  value={email}/>
                 </div>
               </div>
               <div className="input-div pass">
@@ -97,7 +96,7 @@ const Login = () => {
                   value={password}/>
                 </div>
               </div>
-              <a className= "a" href="##">Forgot Password?</a>
+              <Link to={'/'} className= "a" href="##">Don't have an account?</Link>
               <input type="submit" className="btn-css" value="Login" />
             </form>
           </div>

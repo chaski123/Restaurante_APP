@@ -3,9 +3,9 @@ import Swal from 'sweetalert2';
 import fondo from "../img/bg.svg";
 import usuario from "../img/avatar.svg";
 import "../css/style.css";
-import Header from "../Components/Header";
 import {FaUser, FaLock} from 'react-icons/fa';
 import {MdEmail} from 'react-icons/md'
+import { Link } from "react-router-dom";
 
 const Loguin = () => {
   const inputs = document.querySelectorAll(".input");
@@ -63,7 +63,6 @@ const Loguin = () => {
 
   return (
     <>
-      <Header/>
       <div className="bg-dark container-css">
         <div className="img">
           <img src={fondo} alt="img fondo" />
@@ -126,6 +125,7 @@ const Loguin = () => {
                 value={password}/>
               </div>
             </div>
+            <Link to={'/login'} className= "a" href="##">already have an account?</Link>
             <input type="submit" className="btn-css" value="SignUp" />
           </form>
         </div>
