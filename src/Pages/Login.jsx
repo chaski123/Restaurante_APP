@@ -12,7 +12,6 @@ const Login = () => {
 		email: 'luquita@Test.com',
 		password: '123456Test',
 	});
-  // Desestructuring
 
   const focusFunc = (e) => {
     let parent = e.target.parentNode.parentNode;

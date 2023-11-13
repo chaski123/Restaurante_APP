@@ -6,16 +6,15 @@ import "../css/style.css";
 import {FaUser, FaLock} from 'react-icons/fa';
 import {MdEmail} from 'react-icons/md'
 import { Link } from "react-router-dom";
+import { registerFetch } from "../api/registerFetch";
 
 const Loguin = () => {
-  const [users, setUsers] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     lastName: '',
     email: '',
     password: ''
   })
-  //Desestructuring
-  const {name, lastName, email, password} = users
   
   function focusFunc() {
     let parent = this.parentNode.parentNode;
@@ -44,13 +43,13 @@ const Loguin = () => {
   }, []);
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  async (e) => {
     e.preventDefault();
 
-    if(!name.trim() || !password.trim()){
+    if(!formData.email.trim() || !formData.password.trim()){
       Swal.fire({
         title: 'Error!',
-        text: 'Complete todos los campos',
+        text: 'Complete los campos de email y/o password',
         icon: 'error',
         showConfirmButton: false,
         timer: 2000
@@ -60,14 +59,25 @@ const Loguin = () => {
 
     Swal.fire({
       title: 'Perfecto!',
-      text: 'Datos Correctos',
+      text: 'Usuario guardado con exito!!',
       icon: 'success',
       confirmButtonText: 'OK'
     })
+    try{
+        const res = await registerFetch(formData)
+        console.log(res)
+    }catch(error){
+        console.log(error)
+    }
+    
   };
 
   const handleChange = (e) =>{
-      setUsers({...users, [e.target.name]: e.target.value})
+      const { name, value } = e.target;
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
     }
 
   return (
@@ -92,7 +102,7 @@ const Loguin = () => {
                 className="input" 
                 name="name" 
                 onChange={handleChange} 
-                value={name}/>
+                value={formData.name}/>
               </div>
             </div>
             <div className="input-div one">
@@ -105,7 +115,7 @@ const Loguin = () => {
                 className="input" 
                 name="lastName" 
                 onChange={handleChange} 
-                value={lastName}/>
+                value={formData.lastName}/>
               </div>
             </div>
             <div className="input-div one">
@@ -118,7 +128,7 @@ const Loguin = () => {
                 className="input" 
                 name="email" 
                 onChange={handleChange} 
-                value={email}/>
+                value={formData.email}/>
               </div>
             </div>
             <div className="input-div pass">
@@ -131,7 +141,7 @@ const Loguin = () => {
                 className="input" 
                 name="password" 
                 onChange={handleChange}
-                value={password}/>
+                value={formData.password}/>
               </div>
             </div>
             <Link to={'/login'} className= "a" href="##">already have an account?</Link>
