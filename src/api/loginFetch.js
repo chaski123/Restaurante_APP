@@ -4,7 +4,7 @@ export const loginFetch = async (data) => {
     const params = {
       method: "POST",
       headers: {
-        "Content-type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: data.email,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Swal from 'sweetalert2';
 import fondo from "../img/bg.svg";
 import usuario from "../img/avatar.svg";
@@ -8,7 +8,6 @@ import {MdEmail} from 'react-icons/md'
 import { Link } from "react-router-dom";
 
 const Loguin = () => {
-  const inputs = document.querySelectorAll(".input");
   const [users, setUsers] = useState({
     name: '',
     lastName: '',
@@ -30,10 +29,20 @@ const Loguin = () => {
     }
   }
 
-  inputs.forEach((input) => {
-    input.addEventListener("focus", focusFunc);
-    input.addEventListener("blur", blurFunc);
-  });
+  useEffect(() => {
+    const inputs = document.querySelectorAll(".input");
+    inputs.forEach((input) => {
+      input.addEventListener("focus", focusFunc);
+      input.addEventListener("blur", blurFunc);
+
+      
+      return () => {
+        input.removeEventListener("focus", focusFunc);
+        input.removeEventListener("blur", blurFunc);
+      }
+    });
+  }, []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
