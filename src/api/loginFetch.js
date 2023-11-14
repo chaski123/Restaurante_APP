@@ -1,6 +1,7 @@
 export const loginFetch = async (data) => {
   try {
-    const url = "http://localhost:3977/api/v1/auth/login";
+    const url = 'http://localhost:3977/api/v1/auth/login';
+
     const params = {
       method: "POST",
       headers: {

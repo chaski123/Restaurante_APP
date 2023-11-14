@@ -3,7 +3,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 	// usuario estatico (de momento no existe)
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState(false);
 
 	// los datos para utilizar en todo el sitio web
 	const data = {
