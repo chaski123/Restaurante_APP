@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Swal from "sweetalert2";
 import fondo from "../img/bg.svg";
 import usuario from "../img/avatar.svg";
 import "../css/style.css";
 import { FaUser, FaLock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginFetch } from "../api/loginFetch";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
+  // Estado global del usuario -> logueado
+  const {user, setUser} = useContext(AuthContext);
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "luquita@test.com",
-    password: "123456Test",
+    password: "12456Test",
   });
 
   const focusFunc = (e) => {
@@ -68,8 +72,16 @@ const Login = () => {
     });
 
     try {
-      const response = await loginFetch(formData);
-      console.log(response);
+      const { access } = await loginFetch(formData);
+      if(access){
+        setUser({
+          name: 'Lucas',
+          lastname: 'Mancuello',
+          email: 'luquita@test.com'
+        })
+        navigate('/home')
+      }
+      
     } catch (error) {
       console.log(error);
     }
