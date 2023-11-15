@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import SignUp from '../Pages/SignUp'
 import Login from '../Pages/Login';
 import HomePage from '../Pages/HomePage'
+import Menu  from '../Pages/Menu'
+import Carrito from '../Pages/Carrito';
 import { AuthContext } from '../context/AuthContext';
 
 /* 
@@ -10,7 +12,7 @@ configura las rutas de la aplicación para mostrar diferentes componentes según
 */
 const AppRouter = () => {
 	const { user } = useContext(AuthContext);
-
+	
 	return (
 		<Routes>
 			<Route path="/" element={<SignUp />} />
@@ -19,6 +21,8 @@ const AppRouter = () => {
 			{user ? (
 				<>
 					<Route path="/home" element={<HomePage />} />
+					<Route path="/menu" element={<Menu />} />
+					<Route path="/carrito" element={<Carrito />} />
 				</>
 			) : null}
 		</Routes>

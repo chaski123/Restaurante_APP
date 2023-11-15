@@ -7,13 +7,14 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { loginFetch } from "../api/loginFetch";
 import { AuthContext } from "../context/AuthContext";
+import { getMeFetch } from "../api/getMeFetch";
 
 const Login = () => {
   // Estado global del usuario -> logueado
-  const {user, setUser} = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    email: "luquita@test.com",
+    email: "lucas@Test.com",
     password: "12456Test",
   });
 
@@ -64,29 +65,37 @@ const Login = () => {
       return;
     }
 
-    Swal.fire({
-      title: "Perfecto!",
-      text: "Datos Correctos",
-      icon: "success",
-      confirmButtonText: "OK",
-    });
-
     try {
       const { access } = await loginFetch(formData);
-      if(access){
-        setUser({
-          name: 'Lucas',
-          lastname: 'Mancuello',
-          email: 'luquita@test.com'
-        })
-        navigate('/home')
+      const user = await getMeFetch(access);
+    
+      // Verifica si hay algún error en la respuesta del servidor
+      if (user.error) {
+        throw new Error(user.error);
       }
-      
+    
+      // La autenticación fue exitosa
+      Swal.fire({
+        title: "Perfecto!",
+        text: "Datos Correctos",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      login(access);
+      localStorage.setItem('access', access)
+      navigate('/home');
     } catch (error) {
-      console.log(error);
+      console.error(error.message || "Hubo un problema durante el inicio de sesión.");
+    
+      // Muestra un mensaje de error genérico
+      Swal.fire({
+        title: "Error!",
+        text: "Datos Incorrectos",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   };
-
   return (
     <>
       <div className="bg-dark container-css">
@@ -96,7 +105,7 @@ const Login = () => {
         <div className="login-content">
           <form onSubmit={handleSubmit}>
             <img src={usuario} alt="avatar user" />
-            <h2 className="title">Welcome</h2>
+            <h2 className="title">Login</h2>
             <div className="input-div one">
               <div className="i">
                 <FaUser />
@@ -137,5 +146,4 @@ const Login = () => {
     </>
   );
 };
-
 export default Login;

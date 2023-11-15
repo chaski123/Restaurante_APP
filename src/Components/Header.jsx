@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../img/Logo restaurante circular negro.png";
 import userAdmin from "../img/USER.png";
 import UserCliente from "../img/userLogoNavBar.jpg";
-import {MdShoppingBasket, MdFastfood} from 'react-icons/md'
-import {AiFillHome} from 'react-icons/ai'
-import {BsFillPersonFill} from 'react-icons/bs'
+import { MdShoppingBasket, MdFastfood, MdExitToApp } from "react-icons/md";
+import { AiFillHome } from "react-icons/ai";
+import { AuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
-  const userAd = false;
-  return userAd ? (
+  const { user } = useContext(AuthContext);
+  return user.role === "administrador" ? (
     <nav className="navbar navbar-expand-lg bg-dark ">
       <div className="container-fluid">
         <Link to={"/"}>
@@ -29,7 +29,7 @@ const NavBar = () => {
         <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <Link
-              to="/"
+              to="/home"
               className="header-nav__link hover-underline-animation Home"
             >
               INICIO
@@ -79,38 +79,36 @@ const NavBar = () => {
         <div className="collapse navbar-collapse " id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <Link
-              to="/"
+              to="/home"
               className="header-nav__link hover-underline-animation Home"
             >
-            <AiFillHome className="fs-3 me-1 pb-1"/>
+              <AiFillHome className="fs-3 me-1 pb-1" />
               INICIO
             </Link>
             <Link
               to="/menu"
               className="header-nav__link hover-underline-animation"
             >
-            <MdFastfood className="fs-3 me-1 pb-1"/>
+              <MdFastfood className="fs-3 me-1 pb-1" />
               MENUS
             </Link>
             <Link
               to="/carrito"
               className="header-nav__link hover-underline-animation"
             >
-            <MdShoppingBasket className="fs-3 me-1 pb-1"/>
-              CARRITO 
+              <MdShoppingBasket className="fs-3 me-1 pb-1" />
+              CARRITO
             </Link>
-            <Link
-              to="/login"
-              className="header-nav__link hover-underline-animation"
-            >
-            <BsFillPersonFill className="fs-3 me-1 pb-1"/>
-              INGRESAR
-            </Link>
+            <button className="btn btn-danger ms-4 m-auto">
+              <MdExitToApp className="fs-3 me-1 pb-1" />
+              SALIR
+            </button>
           </ul>
         </div>
       </div>
       <div className="header-login">
         <img className="IconUser" src={UserCliente} alt="user" />
+        <span className=" mt-2 text-primary ">{user.name.toUpperCase()}</span>
       </div>
     </nav>
   );

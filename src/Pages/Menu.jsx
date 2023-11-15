@@ -25,7 +25,7 @@ const Menu = () => {
     setMenuItems(newItems);
   };
 
-  const userAdmin = true;
+  const userAdmin = false;
   return (
     <>
       <Header />
@@ -96,7 +96,8 @@ const Menu = () => {
                   <p className="item-text">{desc}</p>
                     <div className="mt-3">
                       <button className="btn btn-success">
-                      <BsCartPlusFill className="text-white fs-4"/>
+                      <BsCartPlusFill className="text-white me-2 fs-4"/>
+                          Agregar
                       </button>
                     </div>
                 </div>
