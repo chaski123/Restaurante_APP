@@ -1,22 +1,25 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import Header from "../Components/Header";
 
 const Carrito = () => {
-    const [carrito, setCarrito] = useState([
-      { nombre: "Producto 1", cantidad: 2, precio: 10 },
-      { nombre: "Producto 2", cantidad: 1, precio: 20 },
-      // Agrega más productos según sea necesario
-    ]);
-  
-    const limpiarCarrito = () => {
-      setCarrito([]);
-    };
-  
-    const total = carrito.reduce(
-      (acc, producto) => acc + producto.cantidad * producto.precio,
-      0
-    );
-  
-    return (
+  const [carrito, setCarrito] = useState([
+    { nombre: "Producto 1", cantidad: 2, precio: 10 },
+    { nombre: "Producto 2", cantidad: 1, precio: 20 },
+    // Agrega más productos según sea necesario
+  ]);
+
+  const limpiarCarrito = () => {
+    setCarrito([]);
+  };
+
+  const total = carrito.reduce(
+    (acc, producto) => acc + producto.cantidad * producto.precio,
+    0
+  );
+
+  return (
+    <>
+      <Header />
       <div className="cart-container m-auto p-2">
         <h2>Carrito de Compras</h2>
         {carrito.map((producto) => (
@@ -30,7 +33,9 @@ const Carrito = () => {
               <p>Total: ${producto.cantidad * producto.precio}</p>
               <button
                 className="btn btn-danger"
-                onClick={() => setCarrito(carrito.filter((p) => p !== producto))}
+                onClick={() =>
+                  setCarrito(carrito.filter((p) => p !== producto))
+                }
               >
                 Eliminar
               </button>
@@ -46,7 +51,8 @@ const Carrito = () => {
           Limpiar Carrito
         </button>
       </div>
-    );
-  };
-  
-  export default Carrito;
+    </>
+  );
+};
+
+export default Carrito;

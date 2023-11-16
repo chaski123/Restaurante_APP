@@ -8,7 +8,7 @@ import { AiFillHome } from "react-icons/ai";
 import { AuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   return user.role === "administrador" ? (
     <nav className="navbar navbar-expand-lg bg-dark ">
       <div className="container-fluid">
@@ -52,6 +52,10 @@ const NavBar = () => {
             >
               USUARIOS
             </Link>
+            <button className="btn btn-danger ms-4 m-auto">
+              <MdExitToApp className="fs-3 me-1 pb-1" />
+              SALIR
+            </button>
           </ul>
         </div>
       </div>
@@ -99,7 +103,7 @@ const NavBar = () => {
               <MdShoppingBasket className="fs-3 me-1 pb-1" />
               CARRITO
             </Link>
-            <button className="btn btn-danger ms-4 m-auto">
+            <button className="btn btn-danger ms-4 m-auto" onClick={logout}>
               <MdExitToApp className="fs-3 me-1 pb-1" />
               SALIR
             </button>

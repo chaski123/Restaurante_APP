@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import SignUp from '../Pages/SignUp'
 import Login from '../Pages/Login';
 import HomePage from '../Pages/HomePage'
 import Menu  from '../Pages/Menu'
 import Carrito from '../Pages/Carrito';
-import { AuthContext } from '../context/AuthContext';
-
 /* 
 configura las rutas de la aplicación para mostrar diferentes componentes según la URL actual. 
 */
