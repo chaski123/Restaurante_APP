@@ -66,7 +66,7 @@ const NavBar = () => {
   ) : (
     <nav className="navbar navbar-expand-lg bg-dark ">
       <div className="container-fluid">
-        <Link to={"/"}>
+        <Link to={"/home"}>
           <img className="header-container__img" src={Logo} alt="logo" />
         </Link>
         <button

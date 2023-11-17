@@ -1,48 +1,73 @@
+import React from "react";
 import { useState, createContext, useEffect } from "react";
 import { getMeFetch } from "../api/getMeFetch";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  // usuario estatico (de momento no existe)
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Funcion autoejecutable ()()
   useEffect(() => {
-    (async () => {
-      const token = localStorage.getItem("access");
-      await login(token);
-      setLoading(false);
-    })();
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("access");
+        await login(token);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const login = async (token) => {
     try {
-      const user = await getMeFetch(token);
-      delete user.password;
-      setUser(user);
+      const userData = await getMeFetch(token);
+      delete userData.password;
+      setUser(userData);
     } catch (error) {
-      console.log(error);
+      return error
     }
   };
 
-  const logout = () =>{
-	setUser(false);
-	localStorage.clear()
-  }
+  const logout = () => {
+    setUser(null);
+    localStorage.clear();
+  };
 
-  // los datos para utilizar en todo el sitio web
+  const spinnerStyles = {
+    border: "4px solid rgba(0, 0, 0, 0.1)",
+    borderLeft: "4px solid #000",
+    borderRadius: "50%",
+    width: "40px",
+    height: "40px",
+    animation: "spin 1s linear infinite",
+    margin: "auto",
+  };
+
+  const containerStyles = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
+
   const data = {
     user,
     setUser,
     login,
-	logout
+    logout,
   };
 
   if (loading) {
-    return null
+    return (
+      <div style={containerStyles}>
+        <h3 className="text-primary">loading...</h3>
+        <div style={spinnerStyles}></div>
+      </div>
+    );
   }
-  // el contexto
+
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

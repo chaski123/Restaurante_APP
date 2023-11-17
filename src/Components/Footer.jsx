@@ -10,14 +10,6 @@ const Footer = () =>{
     const instagramURL = 'https://instagram.com/';
     return(
     <footer className="footer-container bg-dark">
-        <div className="footer-container__login">
-        <Link to={'/login'} className="footer-container__link">
-        <BsFillPersonFill className="me-1"/>
-        Ingresar</Link>
-        <Link to={'/sign-up'} className="footer-container__link">
-        <BiLogIn className="me-1"/>
-        Registrarse</Link>
-        </div>
         <div className="footer-container__redes-sociales">
             <a href={whatsappURL} target="_blank" rel="noopener noreferrer">
                 <BsWhatsapp className="whatsapp"/>

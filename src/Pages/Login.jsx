@@ -14,8 +14,8 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    email: "lucas@Test.com",
-    password: "12456Test",
+    email: "",
+    password: "",
   });
 
   const focusFunc = (e) => {

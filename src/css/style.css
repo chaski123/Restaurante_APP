@@ -462,14 +462,12 @@ p {
   cursor: pointer;
 }
 
-.footer-container__link,
 .footer-container__redes-sociales,
 .footer-container__contacto-link {
   color: #d1dedd;
   text-decoration: none;
 }
 
-.footer-container__link:hover,
 .footer-container__contacto-link:hover{
   color: #1da1f2;
 }
@@ -830,4 +828,10 @@ p {
   border: none !important;
   padding: 5px !important;
   margin: 10px 5px !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
