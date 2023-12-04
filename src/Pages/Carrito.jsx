@@ -5,7 +5,6 @@ const Carrito = () => {
   const [carrito, setCarrito] = useState([
     { nombre: "Producto 1", cantidad: 2, precio: 10 },
     { nombre: "Producto 2", cantidad: 1, precio: 20 },
-    // Agrega más productos según sea necesario
   ]);
 
   const limpiarCarrito = () => {

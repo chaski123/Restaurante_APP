@@ -386,18 +386,24 @@ p {
 }
 
 .section-center {
-  width: 90vw;
   margin: 0 auto;
-  max-width: 1170px;
+  max-width: 1270px;
   display: grid;
   gap: 3rem 2rem;
   justify-items: center;
 }
 
-.menu-item {
+.menu-item-admin {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.menu-item-user {
   display: grid;
   gap: 1rem 2rem;
-  /* max-width: 25rem; */
+  max-width: 25rem;
 }
 
 .photo {
@@ -604,7 +610,11 @@ p {
 
 /* Menu Responsive  */
 @media screen and (min-width: 768px) {
-  .menu-item {
+  .section-center {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .menu-item-user {
     grid-template-columns: 225px 1fr;
     gap: 0 1.25rem;
     max-width: 40rem;
@@ -620,14 +630,15 @@ p {
 }
 @media screen and (min-width: 1200px) {
   .section-center {
-    width: 95vw;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .menu-item-admin {
+    width: 300px;
   }
   .photo {
     height: 200px;
     width: 100%;
   }
-
   .grid-container-users {
     display: grid;
     grid-template-columns: repeat(4, 3fr);
@@ -644,26 +655,21 @@ p {
     align-items: center;
     padding: 15px 30px 60px;
   }
-
   .main-container__principal {
     width: 50%;
   }
-
   .main-container__logo {
     display: block;
     width: 50%;
   }
-
   .main-container__logo {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
   .main-container__img {
     width: 100%;
   }
-
   .body-form {
     padding: 0 4rem;
   }
@@ -671,11 +677,9 @@ p {
     display: grid;
     grid-template-columns: 2fr 1fr;
   }
-
   .contact-wrapper > * {
     padding: 2em;
   }
-
   .footer-container {
     justify-content: space-around;
   }
@@ -689,7 +693,6 @@ p {
     justify-content: space-around;
     margin-right: 10px;
   }
-
   .header-login .IconUser {
     width: 60px;
     height: 60px;
@@ -698,11 +701,9 @@ p {
     border-radius: 50%;
     transition: 0.3s;
   }
-
   .IconUser:hover {
     scale: 1.2;
   }
-
   .hover-underline-animation {
     display: inline-block;
     padding: 10px;
@@ -711,7 +712,6 @@ p {
     text-decoration: none;
     color: #999;
   }
-
   .hover-underline-animation::after {
     content: "";
     position: absolute;
@@ -724,7 +724,6 @@ p {
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
-
   .hover-underline-animation:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
@@ -733,20 +732,16 @@ p {
   .main-container {
     justify-content: space-around;
   }
-
   .main-container__titulo {
     font-size: 75px;
   }
-
   .main__description {
     font-size: 28px;
   }
-
   .main-container__logo {
     display: block;
     width: 700px;
   }
-
   .Home {
     margin-left: 15px;
   }
@@ -758,18 +753,15 @@ p {
     grid-gap: 5rem;
   }
 }
-
 @media screen and (max-width: 1000px) {
   form {
     display: block;
     margin: auto;
   }
-
   .login-content h2 {
     font-size: 2.4rem;
     margin: 8px 0;
   }
-
   .img img {
     width: 400px;
   }
@@ -779,15 +771,12 @@ p {
   .container-css {
     grid-template-columns: 1fr;
   }
-
   .img {
     display: none;
   }
-
   .wave {
     display: none;
   }
-
   .login-content {
     justify-content: center;
   }
@@ -816,11 +805,9 @@ p {
 .icono-personalizado-delete {
   color: #b70e21 !important;
 }
-
 .icono-personalizado-success {
   color: #25d366 !important;
 }
-
 .List-icon {
   color: #000 !important;
 }
@@ -832,13 +819,11 @@ p {
   padding: 5px !important;
   margin: 10px 5px !important;
 }
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
-
 /* Estilos básicos del modal */
 .modal-overlay {
   position: fixed;
@@ -857,7 +842,6 @@ p {
   padding: 20px;
   border-radius: 8px;
 }
-
 .i-modal {
   font-size: 24px;
   margin-top: 10px;
@@ -869,21 +853,17 @@ p {
   margin: auto;
   padding: 20px;
 }
-
 .div {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
 }
-
 .div div {
   margin-right: 15px;
 }
-
 .h5-modal {
   margin-bottom: 5px;
 }
-
 .input-modal {
   width: 100%;
   padding: 8px;

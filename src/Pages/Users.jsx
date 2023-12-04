@@ -1,22 +1,27 @@
-import React from "react";
-import Footer from '../Components/Footer'
+import React, { useContext } from "react";
+import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import CardUser from "../Components/CardUser";
+import { AuthContext } from "../context/AuthContext";
 
 const Users = () => {
-      
-  return (
+  const { user } = useContext(AuthContext);
+  return user.role === "administrador" ? (
     <>
-        <Header/>
-        <div className="title mt-4">
-          <h2>Lista De Usuarios</h2>
-          <div className="underline-users"></div>
-        </div>
-        <div className="grid-container-users">
-          <CardUser />
-        </div>
-        <Footer/>
+      <Header />
+      <div className="title mt-4">
+        <h2>Lista De Usuarios</h2>
+        <div className="underline-users"></div>
+      </div>
+      <div className="grid-container-users">
+        <CardUser />
+      </div>
+      <Footer />
     </>
+  ) : (
+    <span className="alert alert-danger" role="alert">
+      No tiene acceso a esta seccion
+    </span>
   );
 };
 

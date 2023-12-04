@@ -27,12 +27,12 @@ export const AuthProvider = ({ children }) => {
       delete userData.password;
       setUser(userData);
     } catch (error) {
-      return error
+      return error;
     }
   };
 
   const logout = () => {
-    setUser(null);
+    // Clears all items from local storage
     localStorage.clear();
   };
 

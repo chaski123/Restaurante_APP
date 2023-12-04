@@ -16,7 +16,7 @@ const NavBar = () => {
           <img className="header-container__img" src={Logo} alt="logo" />
         </Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler bg-info"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -52,7 +52,7 @@ const NavBar = () => {
             >
               USUARIOS
             </Link>
-            <button className="btn btn-danger ms-4 m-auto">
+            <button className="btn btn-danger ms-4 m-auto" onClick={logout}>
               <MdExitToApp className="fs-3 me-1 pb-1" />
               SALIR
             </button>
