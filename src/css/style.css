@@ -181,9 +181,9 @@ form {
   display: grid;
   grid-template-columns: repeat(1, 3fr);
   grid-column-gap: 5px;
-  grid-row-gap: 5px; 
+  grid-row-gap: 5px;
   padding: 20px 10px;
-  background-color: #CD5C5C;
+  background-color: #cd5c5c;
 }
 
 .grid-container-users > * {
@@ -203,7 +203,7 @@ form {
 /* Grid-Images */
 .images-grid {
   background: #d1dedd;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   color: #000;
 }
 
@@ -225,7 +225,7 @@ form {
   padding: 10px 0px;
 }
 
-.images-grid-title span{
+.images-grid-title span {
   color: #006241;
 }
 
@@ -239,18 +239,18 @@ form {
   text-align: justify;
 }
 .grid-container h3,
-.grid-col h4{
+.grid-col h4 {
   font-weight: bold;
 }
 
-.grid-col span{
+.grid-col span {
   color: #006241;
 }
 
 .bar img:hover,
-.grid-col img:hover{
+.grid-col img:hover {
   transform: scale(1.1);
-  transition: 0.3s
+  transition: 0.3s;
 }
 
 article img,
@@ -468,11 +468,14 @@ p {
   text-decoration: none;
 }
 
-.footer-container__contacto-link:hover{
+.footer-container__contacto-link:hover {
   color: #1da1f2;
 }
-.whatsapp, .facebook, .twitter, .instagram{
-  transition: .8s;
+.whatsapp,
+.facebook,
+.twitter,
+.instagram {
+  transition: 0.8s;
 }
 
 .whatsapp:hover {
@@ -575,7 +578,7 @@ p {
   justify-content: center;
   align-items: center;
   background: #000;
-  color: #4267b2;;
+  color: #4267b2;
 }
 
 .contact-info h4,
@@ -693,10 +696,10 @@ p {
     color: #fff;
     cursor: pointer;
     border-radius: 50%;
-    transition: .3s;
+    transition: 0.3s;
   }
 
-  .IconUser:hover{
+  .IconUser:hover {
     scale: 1.2;
   }
 
@@ -802,27 +805,27 @@ p {
 }
 
 @media screen and (max-width: 760px) {
-	article, article.bar{
-		display: block;
-		margin: 0 20px;
-	}
+  article,
+  article.bar {
+    display: block;
+    margin: 0 20px;
+  }
 }
-
 
 /* COlores */
 .icono-personalizado-delete {
   color: #b70e21 !important;
 }
 
-.icono-personalizado-success{
+.icono-personalizado-success {
   color: #25d366 !important;
 }
 
-.List-icon{
+.List-icon {
   color: #000 !important;
 }
 
-.bg-chip{
+.bg-chip {
   background-color: #000 !important;
   color: #fff !important;
   border: none !important;
@@ -834,4 +837,56 @@ p {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Estilos básicos del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.i-modal {
+  font-size: 24px;
+  margin-top: 10px;
+  color: #000;
+}
+/* Estilos para el formulario dentro del modal */
+.form-modal {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.div div {
+  margin-right: 15px;
+}
+
+.h5-modal {
+  margin-bottom: 5px;
+}
+
+.input-modal {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
