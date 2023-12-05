@@ -1,22 +1,23 @@
 import React, { useState, useEffect, useContext } from "react";
 import { deleteFood } from "../api/deleteFood";
 import { getFoodFetch } from "../api/getFoodFetch";
+import { updateFoods } from "../api/updateFood";
+import { AuthContext } from "../context/AuthContext";
 import logo from "../img/MenuLogo.png";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import { TiDelete } from "react-icons/ti";
-import { updateFoods } from "../api/updateFood";
+import AgregarFoodForm from "../Components/AgregarFoodForm";
 import Modal from "../Components/Modal";
+import { TiDelete } from "react-icons/ti";
 import {
   FaDotCircle,
   FaMoneyBillAlt,
   FaImages,
   FaEdit,
   FaCartPlus,
+  FaHamburger,
 } from "react-icons/fa";
-import { MdFastfood } from "react-icons/md";
 import { FcViewDetails } from "react-icons/fc";
-import { AuthContext } from "../context/AuthContext";
 
 const Menu = () => {
   const { user } = useContext(AuthContext);
@@ -101,122 +102,120 @@ const Menu = () => {
           {food.map((item) => (
             <article key={item._id} className="menu-item-admin">
               {isAdmin && (
-                <ul class="list-group">
-                  <li class="list-group-item">
+                <ul className="list-group ">
+                  <li className="list-group-item">
                     <img
                       src={"http://localhost:3977/" + item.image}
                       alt={item.image}
                       className="photo"
                     />
                   </li>
-                  <li class="list-group-item">{item.name}</li>
-                  <li class="list-group-item">${item.price}</li>
-                  <li class="list-group-item">{item.details}</li>
-                  <li class="list-group-item">
+                  <li className="list-group-item">{item.name}</li>
+                  <li className="list-group-item">${item.price}</li>
+                  <li className="list-group-item">{item.details}</li>
+                  <li className="list-group-item">
                     <button
                       className="btn btn-warning me-2"
                       onClick={() => openModal(item._id)}
                     >
-                      <Modal isOpen={isModalOpen} closeModal={closeModal}>
-                        <form className="form-modal" onSubmit={handleSubmit}>
-                          <div className="div">
-                            <div className="i-modal">
-                              <MdFastfood />
-                            </div>
-                            <div>
-                              <h5 className="h5-modal">Name</h5>
-                              <input
-                                type="text"
-                                className="input-modal"
-                                name="name"
-                                placeholder={`${selectedItemData.name}`}
-                                onChange={(e) => handleInputChange(e, "name")}
-                              />
-                            </div>
-                          </div>
-                          <div className="div">
-                            <div className="i-modal">
-                              <FaDotCircle />
-                            </div>
-                            <div>
-                              <h5 h5-modal>State</h5>
-                              <input
-                                type="text"
-                                className="input-modal"
-                                name="state"
-                                placeholder={`${selectedItemData.state}`}
-                                onChange={(e) => handleInputChange(e, "state")}
-                              />
-                            </div>
-                          </div>
-                          <div className="div">
-                            <div className="i-modal">
-                              <FcViewDetails />
-                            </div>
-                            <div>
-                              <h5 className="h5-modal">Details</h5>
-                              <textarea
-                                type="text"
-                                name="details"
-                                className="input-modal"
-                                placeholder={`${selectedItemData.details}`}
-                                onChange={(e) =>
-                                  handleInputChange(e, "details")
-                                }
-                              />
-                            </div>
-                          </div>
-                          <div className="div">
-                            <div className="i-modal">
-                              <FaMoneyBillAlt />
-                            </div>
-                            <div>
-                              <h5 className="h5-modal">Price</h5>
-                              <input
-                                type="text"
-                                name="price"
-                                className="input-modal"
-                                placeholder={`${selectedItemData.price} USD `}
-                                onChange={(e) => handleInputChange(e, "price")}
-                              />
-                            </div>
-                          </div>
-                          <div className="div">
-                            <div className="i-modal">
-                              <FaImages />
-                            </div>
-                            <div>
-                              <input
-                                type="file"
-                                accept="image/*"
-                                name="image"
-                                className="input-modal"
-                                onChange={(e) => handleInputChange(e, "image")}
-                              />
-                            </div>
-                          </div>
-                          <input
-                            className="btn btn-success mt-2 w-50 m-auto"
-                            type="submit"
-                            value="Aceptar"
-                            onClick={() =>
-                              handleSubmitUpdate(
-                                selectedItemData._id,
-                                selectedItemData
-                              )
-                            }
-                          />
-                        </form>
-                        <button
-                          className="btn btn-danger mt-2 w-20 m-auto"
-                          onClick={closeModal}
-                        >
-                          Cerrar Modal
-                        </button>
-                      </Modal>
                       <FaEdit className="fs-5 me-1" />
                       Editar
                     </button>
+                    <Modal isOpen={isModalOpen} closeModal={closeModal}>
+                      <form className="form-modal" onSubmit={handleSubmit}>
+                        <div className="div">
+                          <div className="i-modal">
+                            <FaHamburger />
+                          </div>
+                          <div>
+                            <h5>Name</h5>
+                            <input
+                              type="text"
+                              className="input-modal"
+                              name="name"
+                              placeholder={`${selectedItemData.name}`}
+                              onChange={(e) => handleInputChange(e, "name")}
+                            />
+                          </div>
+                        </div>
+                        <div className="div">
+                          <div className="i-modal">
+                            <FaDotCircle />
+                          </div>
+                          <div>
+                            <h5>State</h5>
+                            <input
+                              type="text"
+                              className="input-modal"
+                              name="state"
+                              placeholder={`${selectedItemData.state}`}
+                              onChange={(e) => handleInputChange(e, "state")}
+                            />
+                          </div>
+                        </div>
+                        <div className="div">
+                          <div className="i-modal">
+                            <FcViewDetails />
+                          </div>
+                          <div>
+                            <h5>Details</h5>
+                            <textarea
+                              type="text"
+                              name="details"
+                              className="input-modal"
+                              placeholder={`${selectedItemData.details}`}
+                              onChange={(e) => handleInputChange(e, "details")}
+                            />
+                          </div>
+                        </div>
+                        <div className="div">
+                          <div className="i-modal">
+                            <FaMoneyBillAlt />
+                          </div>
+                          <div>
+                            <h5>Price</h5>
+                            <input
+                              type="text"
+                              name="price"
+                              className="input-modal"
+                              placeholder={`${selectedItemData.price} USD `}
+                              onChange={(e) => handleInputChange(e, "price")}
+                            />
+                          </div>
+                        </div>
+                        <div className="div">
+                          <div className="i-modal">
+                            <FaImages />
+                          </div>
+                          <div>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              name="image"
+                              className="input-modal"
+                              onChange={(e) => handleInputChange(e, "image")}
+                            />
+                          </div>
+                        </div>
+                        <input
+                          className="btn btn-success mt-2 w-50 m-auto"
+                          type="submit"
+                          value="Aceptar"
+                          onClick={() =>
+                            handleSubmitUpdate(
+                              selectedItemData._id,
+                              selectedItemData
+                            )
+                          }
+                        />
+                      </form>
+                      <button
+                        className="btn btn-danger mt-2 w-20 m-auto"
+                        onClick={closeModal}
+                      >
+                        Cerrar Modal
+                      </button>
+                    </Modal>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleSubmitDelete(item._id)}
@@ -253,6 +252,7 @@ const Menu = () => {
           ))}
         </div>
       </section>
+      <AgregarFoodForm />
       <Footer />
     </>
   );
