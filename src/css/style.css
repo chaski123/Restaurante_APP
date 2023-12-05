@@ -435,7 +435,7 @@ p {
 }
 .item-text {
   margin-bottom: 0;
-  /* padding-top: 1rem; */
+  width: 10rem;
 }
 
 /* footer */
@@ -630,11 +630,13 @@ p {
 }
 @media screen and (min-width: 1200px) {
   .section-center {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
-  .menu-item-admin {
-    width: 300px;
+
+  .section-center-user {
+    grid-template-columns: 1fr 1fr;
   }
+
   .photo {
     height: 200px;
     width: 100%;

@@ -6,34 +6,23 @@ import Login from "../Pages/Login";
 import HomePage from "../Pages/HomePage";
 import Menu from "../Pages/Menu";
 import Carrito from "../Pages/Carrito";
-import Users from "../Pages/Users";
-import ContactoForm from "../Pages/ContactoForm";
-import Pedidos from "../Pages/Pedidos";
-
+/* 
+configura las rutas de la aplicación para mostrar diferentes componentes según la URL actual. 
+*/
 const AppRouter = () => {
   const { user } = useContext(AuthContext);
-  const isAdmin = user?.role === "administrador";
-
   return (
     <Routes>
       <Route path="/" element={<SignUp />} />
-      <Route path="/*" element={<Login />} />
-      {isAdmin ? (
-        <>
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/usuarios" element={<Users />} />
-          <Route path="/contacto" element={<ContactoForm />} />
-          <Route path="/pedidos" element={<Pedidos />} />
-        </>
-      ) : (
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<Login />} />
+      {user ? (
         <>
           <Route path="/home" element={<HomePage />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/carrito" element={<Carrito />} />
-          <Route path="/contacto" element={<ContactoForm />} />
         </>
-      )}
+      ) : null}
     </Routes>
   );
 };

@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (token) => {
     try {
       const userData = await getMeFetch(token);
-      delete userData.password;
+      delete userData.password; //Porque??
       setUser(userData);
     } catch (error) {
       return error;
@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    setUser(null);
     // Clears all items from local storage
     localStorage.clear();
   };

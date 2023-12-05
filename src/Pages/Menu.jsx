@@ -7,7 +7,13 @@ import Footer from "../Components/Footer";
 import { TiDelete } from "react-icons/ti";
 import { updateFoods } from "../api/updateFood";
 import Modal from "../Components/Modal";
-import { FaDotCircle, FaMoneyBillAlt, FaImages, FaEdit } from "react-icons/fa";
+import {
+  FaDotCircle,
+  FaMoneyBillAlt,
+  FaImages,
+  FaEdit,
+  FaCartPlus,
+} from "react-icons/fa";
 import { MdFastfood } from "react-icons/md";
 import { FcViewDetails } from "react-icons/fc";
 import { AuthContext } from "../context/AuthContext";
@@ -103,9 +109,9 @@ const Menu = () => {
                       className="photo"
                     />
                   </li>
-                  <li class="list-group-item">Plato:"{item.name}</li>
-                  <li class="list-group-item">Precio: ${item.price}</li>
-                  <li class="list-group-item">Ingredientes: {item.details}</li>
+                  <li class="list-group-item">{item.name}</li>
+                  <li class="list-group-item">${item.price}</li>
+                  <li class="list-group-item">{item.details}</li>
                   <li class="list-group-item">
                     <button
                       className="btn btn-warning me-2"
@@ -222,7 +228,7 @@ const Menu = () => {
                 </ul>
               )}
               {isUser && (
-                <article key={item._id} className="menu-item">
+                <article key={item._id} className="menu-item-user">
                   <img
                     src={"http://localhost:3977/" + item.image}
                     alt={item.image}
@@ -234,7 +240,12 @@ const Menu = () => {
                       <h4 className="price">${item.price}</h4>
                     </header>
                     <p className="item-text">{item.details}</p>
-                    <div className="mt-3"></div>
+                    <div className="mt-3">
+                      <button className="btn btn-success">
+                        <FaCartPlus className="fs-5 me-2" />
+                        Agregar
+                      </button>
+                    </div>
                   </div>
                 </article>
               )}

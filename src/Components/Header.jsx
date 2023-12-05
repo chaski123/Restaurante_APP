@@ -61,6 +61,7 @@ const NavBar = () => {
       </div>
       <div className="header-login">
         <img className="IconUser" src={userAdmin} alt="user" />
+        <span className=" mt-2 text-primary ">{user.name.toUpperCase()}</span>
       </div>
     </nav>
   ) : (
