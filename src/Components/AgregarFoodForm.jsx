@@ -8,7 +8,6 @@ const FoodForm = () => {
     details: "",
     price: "",
     state: "",
-    image: "",
   });
 
   const handleChange = (e) => {
@@ -25,8 +24,8 @@ const FoodForm = () => {
       formData.name.trim() === "" ||
       formData.details.trim() === "" ||
       formData.price.trim() === "" ||
-      formData.state.trim() === "" ||
-      formData.image.trim() === ""
+      /^\d+$/.test(formData.price) ||
+      formData.state.trim() === ""
     ) {
       Swal.fire({
         icon: "error",
@@ -52,13 +51,12 @@ const FoodForm = () => {
       });
     }
     // Reiniciar el formulario después de enviar
-    setFormData({
-      name: "",
-      details: "",
-      price: "",
-      state: "",
-      image: "",
-    });
+    // setFormData({
+    //   name: "",
+    //   details: "",
+    //   price: "",
+    //   state: "",
+    // });
   };
 
   return (
@@ -114,19 +112,6 @@ const FoodForm = () => {
             id="state"
             name="state"
             value={formData.state}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="image" className="form-label">
-            Image
-          </label>
-          <input
-            type="file"
-            className="form-control"
-            id="image"
-            name="image"
-            value={formData.image}
             onChange={handleChange}
           />
         </div>

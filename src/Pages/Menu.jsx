@@ -3,6 +3,7 @@ import { deleteFood } from "../api/deleteFood";
 import { getFoodFetch } from "../api/getFoodFetch";
 import { updateFoods } from "../api/updateFood";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 import logo from "../img/MenuLogo.png";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -30,15 +31,14 @@ const Menu = () => {
     state: "",
     details: "",
     price: "",
-    image: "",
   });
 
   // Esto es para actualizar los datos de los placeholder dentro del modal por eso el id
   const openModal = (id) => {
     const selectedFood = food.find((item) => item._id === id);
     if (selectedFood) {
-      const { name, state, details, price, image } = selectedFood;
-      setSelectedItemData({ name, state, details, price, image });
+      const { name, state, details, price, image, _id } = selectedFood;
+      setSelectedItemData({ name, state, details, price, image, _id });
       setModalOpen(true);
     }
   };
@@ -62,22 +62,47 @@ const Menu = () => {
   const handleSubmitDelete = async (id) => {
     try {
       await deleteFood(id);
-      // Actualizar el estado de 'food' eliminando el elemento con el ID correspondiente
       setFood((prevFood) => prevFood.filter((item) => item._id !== id));
+
+      Swal.fire({
+        icon: "success",
+        title: "Eliminación exitosa",
+        text: "El elemento ha sido eliminado correctamente.",
+      });
     } catch (error) {
       console.error(
         error.message || "Hubo un problema al eliminar el elemento."
       );
+
+      // Mostrar alerta de error
+      Swal.fire({
+        icon: "error",
+        title: "Error al eliminar",
+        text: "Hubo un problema al eliminar el elemento.",
+      });
     }
   };
 
   // Para actualizar los datos de la comida
   const handleSubmitUpdate = async (id, data) => {
     try {
-      await updateFoods(id, data);
-      getFoodFetch().then((data) => setFood(data));
+      if (id) {
+        await updateFoods(id, data);
+        const updatedFood = await getFoodFetch();
+        setFood(updatedFood);
+      }
+      Swal.fire({
+        icon: "success",
+        title: "Actualizacion exitosa",
+        text: "El elemento ha sido actualizado correctamente.",
+      });
+      closeModal();
     } catch (error) {
-      console.error(error.message || "Hubo un problema al editar el elemento.");
+      Swal.fire({
+        icon: "error",
+        title: "Error al Actualizar",
+        text: "El elemento ha sido actualizado correctamente.",
+      });
     }
   };
 
@@ -180,20 +205,6 @@ const Menu = () => {
                               className="input-modal"
                               placeholder={`${selectedItemData.price} USD `}
                               onChange={(e) => handleInputChange(e, "price")}
-                            />
-                          </div>
-                        </div>
-                        <div className="div">
-                          <div className="i-modal">
-                            <FaImages />
-                          </div>
-                          <div>
-                            <input
-                              type="file"
-                              accept="image/*"
-                              name="image"
-                              className="input-modal"
-                              onChange={(e) => handleInputChange(e, "image")}
                             />
                           </div>
                         </div>
