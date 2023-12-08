@@ -101,17 +101,24 @@ const Menu = () => {
       Swal.fire({
         icon: "error",
         title: "Error al Actualizar",
-        text: "El elemento ha sido actualizado correctamente.",
+        text: "El elemento no se ha podido actualizar correctamente.",
       });
     }
   };
 
   // Para manejar dinamicamente los valores de los inputs del form
   const handleInputChange = (e, field) => {
-    setSelectedItemData({
-      ...selectedItemData,
-      [field]: e.target.value,
-    });
+    if (field === "image") {
+      setSelectedItemData({
+        ...selectedItemData,
+        [field]: e.target.files[0].name, // Usar solo el nombre del archivo
+      });
+    } else {
+      setSelectedItemData({
+        ...selectedItemData,
+        [field]: e.target.value,
+      });
+    }
   };
 
   return (
@@ -153,12 +160,12 @@ const Menu = () => {
                             <FaHamburger />
                           </div>
                           <div>
-                            <h5>Name</h5>
+                            <h5>Nombre</h5>
                             <input
                               type="text"
                               className="input-modal"
                               name="name"
-                              placeholder={`${selectedItemData.name}`}
+                              value={`${selectedItemData.name}`}
                               onChange={(e) => handleInputChange(e, "name")}
                             />
                           </div>
@@ -168,12 +175,12 @@ const Menu = () => {
                             <FaDotCircle />
                           </div>
                           <div>
-                            <h5>State</h5>
+                            <h5>Estado</h5>
                             <input
                               type="text"
                               className="input-modal"
                               name="state"
-                              placeholder={`${selectedItemData.state}`}
+                              value={`${selectedItemData.state}`}
                               onChange={(e) => handleInputChange(e, "state")}
                             />
                           </div>
@@ -183,12 +190,12 @@ const Menu = () => {
                             <FcViewDetails />
                           </div>
                           <div>
-                            <h5>Details</h5>
+                            <h5>Ingredientes</h5>
                             <textarea
                               type="text"
                               name="details"
                               className="input-modal"
-                              placeholder={`${selectedItemData.details}`}
+                              value={`${selectedItemData.details}`}
                               onChange={(e) => handleInputChange(e, "details")}
                             />
                           </div>
@@ -198,13 +205,27 @@ const Menu = () => {
                             <FaMoneyBillAlt />
                           </div>
                           <div>
-                            <h5>Price</h5>
+                            <h5>Precio</h5>
                             <input
                               type="text"
                               name="price"
                               className="input-modal"
-                              placeholder={`${selectedItemData.price} USD `}
+                              placeholder={`${selectedItemData.price} USD`}
                               onChange={(e) => handleInputChange(e, "price")}
+                            />
+                          </div>
+                        </div>
+                        <div className="div">
+                          <div className="i-modal">
+                            <FaImages />
+                          </div>
+                          <div>
+                            <h5>Imagen</h5>
+                            <input
+                              type="file"
+                              name="image"
+                              accept="image/*"
+                              onChange={(e) => handleInputChange(e, "image")}
                             />
                           </div>
                         </div>
@@ -263,7 +284,7 @@ const Menu = () => {
           ))}
         </div>
       </section>
-      <AgregarFoodForm />
+      {isAdmin && <AgregarFoodForm />}
       <Footer />
     </>
   );

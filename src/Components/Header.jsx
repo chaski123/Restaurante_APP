@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import Logo from "../img/Logo restaurante circular negro.png";
 import userAdmin from "../img/USER.png";
 import UserCliente from "../img/userLogoNavBar.jpg";
-import { MdShoppingBasket, MdFastfood, MdExitToApp } from "react-icons/md";
+import {
+  MdShoppingBasket,
+  MdFastfood,
+  MdExitToApp,
+  MdRestaurantMenu,
+} from "react-icons/md";
 import { AiFillHome } from "react-icons/ai";
+import { FaUsers } from "react-icons/fa6";
 import { AuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
@@ -32,24 +38,28 @@ const NavBar = () => {
               to="/home"
               className="header-nav__link hover-underline-animation Home"
             >
+              <AiFillHome className="fs-3 me-1 pb-1" />
               INICIO
             </Link>
             <Link
               to="/menu"
               className="header-nav__link hover-underline-animation"
             >
+              <MdFastfood className="fs-3 me-1 pb-1" />
               MENUS
             </Link>
             <Link
               to="/pedidos"
               className="header-nav__link hover-underline-animation"
             >
+              <MdRestaurantMenu className="fs-3 me-1 pb-1" />
               PEDIDOS
             </Link>
             <Link
               to="/usuarios"
               className="header-nav__link hover-underline-animation"
             >
+              <FaUsers className="fs-3 me-1 pb-1" />
               USUARIOS
             </Link>
             <button className="btn btn-danger ms-4 m-auto" onClick={logout}>

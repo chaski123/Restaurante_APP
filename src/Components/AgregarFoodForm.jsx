@@ -8,6 +8,8 @@ const FoodForm = () => {
     details: "",
     price: "",
     state: "",
+    category: "",
+    image: "",
   });
 
   const handleChange = (e) => {
@@ -19,13 +21,13 @@ const FoodForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
     if (
       formData.name.trim() === "" ||
       formData.details.trim() === "" ||
       formData.price.trim() === "" ||
       /^\d+$/.test(formData.price) ||
-      formData.state.trim() === ""
+      formData.state.trim() === "" ||
+      formData.category.trim() === ""
     ) {
       Swal.fire({
         icon: "error",
@@ -51,12 +53,14 @@ const FoodForm = () => {
       });
     }
     // Reiniciar el formulario después de enviar
-    // setFormData({
-    //   name: "",
-    //   details: "",
-    //   price: "",
-    //   state: "",
-    // });
+    setFormData({
+      name: "",
+      details: "",
+      price: "",
+      state: "",
+      category: "",
+      image: "",
+    });
   };
 
   return (
@@ -65,7 +69,7 @@ const FoodForm = () => {
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
-            Name
+            Nombre
           </label>
           <input
             type="text"
@@ -78,7 +82,7 @@ const FoodForm = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="details" className="form-label">
-            Details
+            Ingredientes
           </label>
           <textarea
             className="form-control"
@@ -91,7 +95,7 @@ const FoodForm = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="price" className="form-label">
-            Price
+            Precio
           </label>
           <input
             type="text"
@@ -104,7 +108,7 @@ const FoodForm = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="state" className="form-label">
-            State
+            Estado
           </label>
           <input
             type="text"
@@ -115,6 +119,33 @@ const FoodForm = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="mb-3">
+          <label htmlFor="state" className="form-label">
+            Categoria
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+          />
+        </div>
+        {/* <div className="mb-3">
+          <label htmlFor="state" className="form-label">
+            Imagen
+          </label>
+          <input
+            type="file"
+            className="form-control"
+            id="imagen"
+            name="imagen"
+            accept="image/*"
+            value={formData.image}
+            onChange={handleChange}
+          />
+        </div> */}
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

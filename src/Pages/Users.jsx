@@ -4,6 +4,9 @@ import Header from "../Components/Header";
 import CardUser from "../Components/CardUser";
 import { AuthContext } from "../context/AuthContext";
 
+// Mostrar solo los usuarios logueados en en la pagina
+// actualizar su estado en el servidor
+
 const Users = () => {
   const { user } = useContext(AuthContext);
   return user.role === "administrador" ? (

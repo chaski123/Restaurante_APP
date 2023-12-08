@@ -6,6 +6,8 @@ import Login from "../Pages/Login";
 import HomePage from "../Pages/HomePage";
 import Menu from "../Pages/Menu";
 import Carrito from "../Pages/Carrito";
+import Pedidos from "../Pages/Pedidos";
+import Users from "../Pages/Users";
 /* 
 configura las rutas de la aplicación para mostrar diferentes componentes según la URL actual. 
 */
@@ -21,6 +23,14 @@ const AppRouter = () => {
           <Route path="/home" element={<HomePage />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/carrito" element={<Carrito />} />
+          {user.role === "administrador" && (
+            <>
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/pedidos" element={<Pedidos />} />
+              <Route path="/usuarios" element={<Users />} />
+            </>
+          )}
         </>
       ) : null}
     </Routes>
