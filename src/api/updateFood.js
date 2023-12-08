@@ -6,7 +6,7 @@ export const updateFoods = async (id, data) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data), // Utiliza el objeto 'data' proporcionado como cuerpo
+      body: JSON.stringify(data),
     };
 
     const response = await fetch(url, params);

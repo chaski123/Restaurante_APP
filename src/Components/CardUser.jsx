@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getUsersFetch } from "../api/getUsersFetch";
+import { updateUserStatus } from "../api/updateUserStatus";
+import Swal from "sweetalert2";
 import DraftsIcon from "@mui/icons-material/Drafts";
+import Logo from "../img/User_Logo1.png";
 import {
   List,
   ListItemText,
@@ -10,34 +14,63 @@ import {
   Card,
   Chip,
 } from "@mui/material";
-import { Person, Phone, CheckCircle, RemoveCircle } from "@mui/icons-material";
-import users from "../data/UserData";
+import {
+  Person,
+  CheckCircle,
+  RemoveCircle,
+  CircleRounded,
+} from "@mui/icons-material";
 
 const CardUser = () => {
   // Usamos un array de estados para controlar la visibilidad de los chips en cada tarjeta
-  const [chipsVisible, setChipsVisible] = useState(users.map(() => true));
+  const [users, setUsers] = useState([]);
 
-  // Funcion para activar al usuario
-  const handleActivate = (index) => {
-    const newChipsVisible = [...chipsVisible];
-    newChipsVisible[index] = true;
-    setChipsVisible(newChipsVisible);
-  };
+  useEffect(() => {
+    getUsersFetch()
+      .then((data) => setUsers(data))
+      .catch((error) => console.log(error));
+  }, []);
 
-  // Funcion para desactivar al usuario
-  const handleDeactivate = (index) => {
-    const newChipsVisible = [...chipsVisible];
-    newChipsVisible[index] = false;
-    setChipsVisible(newChipsVisible);
+  const handleToggleActivation = async (userId, newStatus) => {
+    console.log(userId, newStatus);
+    try {
+      await updateUserStatus(userId, newStatus);
+
+      // Actualizar el estado local si es necesario
+      setUsers((prevUsers) => {
+        const updatedUsers = [...prevUsers];
+        const updatedUserIndex = updatedUsers.findIndex(
+          (user) => user._id === userId
+        );
+        if (updatedUserIndex !== -1) {
+          updatedUsers[updatedUserIndex].active = newStatus;
+        }
+        Swal.fire({
+          icon: "success",
+          title: "Actualizacion exitosa",
+          text: "El estado del usuario se actualizo exitosamente.",
+        });
+        return updatedUsers;
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: `${error}`,
+        text: "No se pudo actualizar el estado del usuario.",
+      });
+    }
   };
 
   return (
     <>
-      {Object.values(users).map((user, index) => {
-        const { id, name, mail, phone, img } = user;
+      {users.map((user) => {
+        const { _id, name, email, role, active } = user;
         return (
-          <Card key={id} sx={{ maxWidth: 360, bgcolor: "secondary", margin: 2 }}>
-            <CardMedia component="img" height="350" image={img} alt="User 1" />
+          <Card
+            key={_id}
+            sx={{ maxWidth: 360, bgcolor: "secondary", margin: 2 }}
+          >
+            <CardMedia component="img" height="350" src={Logo} alt="User_Img" />
             <Typography variant="body2" color="text.primary">
               <List sx={{ width: "100%", maxWidth: 360, bgcolor: "primary" }}>
                 <ListItemButton>
@@ -50,32 +83,29 @@ const CardUser = () => {
                   <ListItemIcon>
                     <DraftsIcon className="List-icon" />
                   </ListItemIcon>
-                  <ListItemText primary={mail} />
+                  <ListItemText primary={email} />
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <Phone className="List-icon" />
+                    <CircleRounded className="List-icon" />
                   </ListItemIcon>
-                  <ListItemText primary={phone} />
+                  <ListItemText primary={role} />
                 </ListItemButton>
               </List>
             </Typography>
-            {chipsVisible[index] ? (
-              <Chip
-                className="bg-chip"
-                label="Activar Usuario"
-                onClick={() => handleDeactivate(index)}
-                icon={<CheckCircle className="icono-personalizado-success" />}
-                variant="outlined"
-              />
-            ) : (
-              <Chip
-                className="bg-chip"
-                label="Desactivar Usuario"
-                onClick={() => handleActivate(index)}
-                icon={<RemoveCircle className="icono-personalizado-delete" />}
-              />
-            )}
+            <Chip
+              className="bg-chip"
+              label={active ? "Desactivar Usuario" : "Activar Usuario"}
+              onClick={() => handleToggleActivation(user._id, !active)}
+              icon={
+                user.active ? (
+                  <RemoveCircle className="icono-personalizado-delete" />
+                ) : (
+                  <CheckCircle className="icono-personalizado-success" />
+                )
+              }
+              variant={user.active ? undefined : "outlined"}
+            />
           </Card>
         );
       })}
