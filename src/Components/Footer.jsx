@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BiLogIn } from "react-icons/bi";
-import {
-  BsFillPersonFill,
-  BsWhatsapp,
-  BsFacebook,
-  BsTwitter,
-  BsInstagram,
-} from "react-icons/bs";
+import { BsWhatsapp, BsFacebook, BsTwitter, BsInstagram } from "react-icons/bs";
 
 const Footer = () => {
   const whatsappURL = "https://www.whatsapp.com/";

@@ -8,6 +8,7 @@ import Menu from "../Pages/Menu";
 import Carrito from "../Pages/Carrito";
 import Pedidos from "../Pages/Pedidos";
 import Users from "../Pages/Users";
+import Contacto from "../Pages/ContactoForm";
 /* 
 configura las rutas de la aplicación para mostrar diferentes componentes según la URL actual. 
 */
@@ -23,12 +24,14 @@ const AppRouter = () => {
           <Route path="/home" element={<HomePage />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/contacto" element={<Contacto />} />
           {user.role === "administrador" && (
             <>
               <Route path="/home" element={<HomePage />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/pedidos" element={<Pedidos />} />
               <Route path="/usuarios" element={<Users />} />
+              <Route path="/contacto" element={<Contacto />} />
             </>
           )}
         </>

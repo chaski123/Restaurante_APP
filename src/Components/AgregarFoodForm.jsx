@@ -91,7 +91,7 @@ const FoodForm = () => {
             rows="4"
             value={formData.details}
             onChange={handleChange}
-          ></textarea>
+          />
         </div>
         <div className="mb-3">
           <label htmlFor="price" className="form-label">

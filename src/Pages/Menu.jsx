@@ -31,6 +31,7 @@ const Menu = () => {
     state: "",
     details: "",
     price: "",
+    image: "",
   });
 
   // Esto es para actualizar los datos de los placeholder dentro del modal por eso el id
@@ -111,7 +112,7 @@ const Menu = () => {
     if (field === "image") {
       setSelectedItemData({
         ...selectedItemData,
-        [field]: e.target.files[0].name, // Usar solo el nombre del archivo
+        [field]: e.target.files[0].name, // Para tener solo el nombre del archivo
       });
     } else {
       setSelectedItemData({
@@ -119,6 +120,7 @@ const Menu = () => {
         [field]: e.target.value,
       });
     }
+    // console.log(selectedItemData);
   };
 
   return (

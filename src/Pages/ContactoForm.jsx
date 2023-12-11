@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 import "animate.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -6,14 +7,57 @@ import { FaLocationDot, FaPhone, FaGlobe } from "react-icons/fa6";
 import { GrMail } from "react-icons/gr";
 
 const ContactoForm = () => {
-  const EnviarForm = (e) => {
-    e.preventDefault();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    matter: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      formData.name.trim() === "" ||
+      formData.email.trim() === "" ||
+      formData.phone.trim() === "" ||
+      formData.matter.trim() === "" ||
+      formData.message.trim() === ""
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Todos los campos son obligatorios",
+      });
+      return;
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: "Mensaje enviado con éxito",
+        text: "Gracias por contactarnos....",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        matter: "",
+        message: "",
+      });
+    }
+  };
+
   return (
     <>
       <Header />
       <div className="body-form ">
-        <div className="content animate__animated animate__bounce">
+        <div className="content animate__animated animate__pulse">
           <h1 className="logo_contact">
             Contact <span>Us</span>
           </h1>
@@ -22,44 +66,56 @@ const ContactoForm = () => {
               <h3>
                 Contact <span>Us</span>
               </h3>
-              <form action="">
+              <form onSubmit={handleSubmit}>
                 <p>
                   <label>Nombre Completo</label>
                   <input
                     type="text"
-                    name="full-name"
+                    name="name"
                     placeholder="John Doe"
-                  ></input>
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
                 </p>
                 <p>
                   <label>Correo Electronico</label>
                   <input
                     type="email"
-                    name="adress"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="juan@test.com"
-                  ></input>
+                  />
                 </p>
                 <p>
                   <label>Telefono</label>
-                  <input type="tel" name="phone"></input>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="111-4444-333"
+                    onChange={handleChange}
+                    value={formData.phone}
+                  />
                 </p>
                 <p>
                   <label>Asunto</label>
-                  <input type="text" name="asunto"></input>
+                  <input
+                    type="text"
+                    name="matter"
+                    value={formData.matter}
+                    onChange={handleChange}
+                  />
                 </p>
                 <p className="block">
                   <label>Mensaje</label>
                   <textarea
-                    name="mensaje"
-                    cols={30}
-                    rows={3}
-                    placeholder="Escriba Aqui..."
-                  ></textarea>
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
                 </p>
                 <p className="block">
-                  <button onClick={(e) => EnviarForm(e)} type="submit">
-                    Enviar
-                  </button>
+                  <button type="submit">Enviar</button>
                 </p>
               </form>
             </div>
