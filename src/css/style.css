@@ -429,6 +429,7 @@ p {
 }
 .item-info h4 {
   margin-bottom: 0.5rem;
+  margin-right: 4px;
 }
 .price {
   color: #c59d5f;
@@ -871,4 +872,12 @@ p {
   padding: 8px;
   box-sizing: border-box;
   margin-bottom: 10px;
+}
+
+/* contador producto nav */
+.cart-count {
+  background-color: #1da1f2;
+  border-radius: 20px;
+  padding: 8px;
+  color: #000;
 }

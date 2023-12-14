@@ -12,8 +12,10 @@ import {
 import { AiFillHome } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa6";
 import { AuthContext } from "../context/AuthContext";
+import { useCart } from "../context/CartProvider";
 
 const NavBar = () => {
+  const { cart } = useCart();
   const { user, logout } = useContext(AuthContext);
   return user.role === "administrador" ? (
     <nav className="navbar navbar-expand-lg bg-dark ">
@@ -113,6 +115,7 @@ const NavBar = () => {
             >
               <MdShoppingBasket className="fs-3 me-1 pb-1" />
               CARRITO
+              <span className="cart-count ms-2">{cart.length}</span>
             </Link>
             <button className="btn btn-danger ms-4 m-auto" onClick={logout}>
               <MdExitToApp className="fs-3 me-1 pb-1" />

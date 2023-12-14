@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { deleteFood } from "../api/deleteFood";
 import { getFoodFetch } from "../api/getFoodFetch";
 import { updateFoods } from "../api/updateFood";
@@ -19,11 +19,14 @@ import {
   FaHamburger,
 } from "react-icons/fa";
 import { FcViewDetails } from "react-icons/fc";
+import { useCart } from "../context/CartProvider";
 
 const Menu = () => {
+  const { cart, setCart } = useCart();
+  // const [cart, setCart] = useState([]);
   const { user } = useContext(AuthContext);
   const isAdmin = user.role === "administrador";
-  const isUser = user.role === "user";
+  const isUser = user.role === "cliente";
   const [food, setFood] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedItemData, setSelectedItemData] = useState({
@@ -122,6 +125,29 @@ const Menu = () => {
     }
     // console.log(selectedItemData);
   };
+
+  // Para guardar los datos de los elementos en el cart
+  const addToCart = useCallback((item) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find(
+        (cartItem) => cartItem._id === item._id
+      );
+
+      if (existingItem) {
+        return prevCart.map((cartItem) =>
+          cartItem._id === item._id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+      } else {
+        return [...prevCart, { ...item, quantity: 1 }];
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
 
   return (
     <>
@@ -261,7 +287,7 @@ const Menu = () => {
                 </ul>
               )}
               {isUser && (
-                <article key={item._id} className="menu-item-user">
+                <article className="menu-item-user">
                   <img
                     src={"http://localhost:3977/" + item.image}
                     alt={item.image}
@@ -273,8 +299,11 @@ const Menu = () => {
                       <h4 className="price">${item.price}</h4>
                     </header>
                     <p className="item-text">{item.details}</p>
-                    <div className="mt-3">
-                      <button className="btn btn-success">
+                    <div className="m-1">
+                      <button
+                        className="btn btn-success mb-2"
+                        onClick={() => addToCart(item)}
+                      >
                         <FaCartPlus className="fs-5 me-2" />
                         Agregar
                       </button>

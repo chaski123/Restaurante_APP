@@ -1,55 +1,60 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../Components/Header";
+import { useCart } from "../context/CartProvider";
 
 const Carrito = () => {
-  const [carrito, setCarrito] = useState([
-    { nombre: "Producto 1", cantidad: 2, precio: 10 },
-    { nombre: "Producto 2", cantidad: 1, precio: 20 },
-  ]);
+  const { cart, setCart } = useCart();
 
   const limpiarCarrito = () => {
-    setCarrito([]);
+    setCart([]);
   };
 
-  const total = carrito.reduce(
-    (acc, producto) => acc + producto.cantidad * producto.precio,
-    0
+  const total = Math.round(
+    cart.reduce((acc, item) => acc + item.quantity * item.price, 0)
   );
 
   return (
     <>
       <Header />
-      <div className="cart-container m-auto p-2">
-        <h2>Carrito de Compras</h2>
-        {carrito.map((producto) => (
-          <div key={producto.nombre} className="cart-item">
-            <div>
-              <h4>{producto.nombre}</h4>
-              <p>Cantidad: {producto.cantidad}</p>
-              <p>Precio: ${producto.precio}</p>
+      {cart.length === 0 ? (
+        <div class=" container alert alert-info mt-2" role="alert">
+          El carrito esta vacio !!!
+        </div>
+      ) : (
+        cart.map((item) => (
+          <>
+            <div key={item._id} className="cart-item">
+              <div>
+                <h4>{item.name}</h4>
+                <p>Cantidad: {item.quantity}</p>
+                <p>Precio: ${item.price}</p>
+              </div>
+              <div>
+                <p>Total: ${item.quantity * item.price}</p>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => setCart(cart.filter((p) => p !== item))}
+                >
+                  Eliminar
+                </button>
+              </div>
             </div>
-            <div>
-              <p>Total: ${producto.cantidad * producto.precio}</p>
+            <div className="cart-container m-auto p-2">
+              <div className="total">
+                <p>Total: ${total}</p>
+                <p>Fecha: {new Date().toLocaleDateString()}</p>
+                <p>Cantidad de Productos: {cart.length}</p>
+              </div>
               <button
                 className="btn btn-danger"
-                onClick={() =>
-                  setCarrito(carrito.filter((p) => p !== producto))
-                }
+                onClick={() => limpiarCarrito()}
               >
-                Eliminar
+                Limpiar Carrito
               </button>
             </div>
-          </div>
-        ))}
-        <div className="total">
-          <p>Total: ${total}</p>
-          <p>Fecha: {new Date().toLocaleDateString()}</p>
-          <p>Cantidad de Productos: {carrito.length}</p>
-        </div>
-        <button className="btn btn-danger" onClick={limpiarCarrito}>
-          Limpiar Carrito
-        </button>
-      </div>
+          </>
+        ))
+      )}
     </>
   );
 };
