@@ -700,12 +700,8 @@ p {
     width: 60px;
     height: 60px;
     color: #fff;
-    cursor: pointer;
     border-radius: 50%;
     transition: 0.3s;
-  }
-  .IconUser:hover {
-    scale: 1.2;
   }
   .hover-underline-animation {
     display: inline-block;
@@ -731,7 +727,6 @@ p {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
-
   .main-container {
     justify-content: space-around;
   }
@@ -803,7 +798,6 @@ p {
     margin: 0 20px;
   }
 }
-
 /* COlores */
 .icono-personalizado-delete {
   color: #b70e21 !important;
@@ -814,7 +808,6 @@ p {
 .List-icon {
   color: #000 !important;
 }
-
 .bg-chip {
   background-color: #000 !important;
   color: #fff !important;

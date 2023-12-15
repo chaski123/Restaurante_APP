@@ -115,7 +115,9 @@ const NavBar = () => {
             >
               <MdShoppingBasket className="fs-3 me-1 pb-1" />
               CARRITO
-              <span className="cart-count ms-2">{cart.length}</span>
+              {cart.length > 0 && (
+                <span className="cart-count ms-2">{cart.length}</span>
+              )}
             </Link>
             <button className="btn btn-danger ms-4 m-auto" onClick={logout}>
               <MdExitToApp className="fs-3 me-1 pb-1" />

@@ -145,10 +145,6 @@ const Menu = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
-
   return (
     <>
       <Header />
