@@ -24,6 +24,7 @@ const AppRouter = () => {
           <Route path="/home" element={<HomePage />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/pedidos" element={<Pedidos />} />
           <Route path="/contacto" element={<Contacto />} />
           {user.role === "administrador" && (
             <>

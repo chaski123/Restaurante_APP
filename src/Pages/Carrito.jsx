@@ -112,45 +112,6 @@ const Carrito = () => {
           </div>
         </>
       )}
-
-      <div className="accordion m-5">
-        <div className="accordion-item">
-          <h2 className="accordion-header">
-            <button
-              className="accordion-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
-            >
-              Pedidos Realizados
-              {requests.length > 0 && (
-                <span className="ms-2">{requests.length}</span>
-              )}
-            </button>
-          </h2>
-          <div
-            id="collapseOne"
-            className="accordion-collapse collapse show"
-            data-bs-parent="#accordionExample"
-          >
-            {requests.map((item) => (
-              <div className="accordion-body" key={requests._id}>
-                <h3>Detalles del Pedido Confirmado</h3>
-                <p>Usuario: {item.usuario}</p>
-                <p>Correo: {item.correo}</p>
-                <p>Fecha: {item.fecha}</p>
-                <p>Precio Final: ${item.precioFinal}</p>
-                <p>
-                  Cantidad de Productos Comprados:
-                  {item.cantidadProductos}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </>
   );
 };

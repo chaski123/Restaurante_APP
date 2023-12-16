@@ -12,7 +12,7 @@ import { getMeFetch } from "../api/getMeFetch";
 const Login = () => {
   // Estado global del usuario -> logueado
   const { login } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -68,12 +68,13 @@ const Login = () => {
     try {
       const { access } = await loginFetch(formData);
       const user = await getMeFetch(access);
-    
+      console.log(user);
+
       // Verifica si hay algún error en la respuesta del servidor
       if (user.error) {
         throw new Error(user.error);
       }
-    
+
       // La autenticación fue exitosa
       Swal.fire({
         title: "Perfecto!",
@@ -82,11 +83,13 @@ const Login = () => {
         confirmButtonText: "OK",
       });
       login(access);
-      localStorage.setItem('access', access)
-      navigate('/home');
+      localStorage.setItem("access", access);
+      navigate("/home");
     } catch (error) {
-      console.error(error.message || "Hubo un problema durante el inicio de sesión.");
-    
+      console.error(
+        error.message || "Hubo un problema durante el inicio de sesión."
+      );
+
       // Muestra un mensaje de error genérico
       Swal.fire({
         title: "Error!",

@@ -11,6 +11,7 @@ import {
 } from "react-icons/md";
 import { AiFillHome } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa6";
+import { FaShoppingBag } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
 import { useCart } from "../context/CartProvider";
 
@@ -54,7 +55,7 @@ const NavBar = () => {
               to="/pedidos"
               className="header-nav__link hover-underline-animation"
             >
-              <MdRestaurantMenu className="fs-3 me-1 pb-1" />
+              <FaShoppingBag className="fs-3 me-1 pb-1" />
               PEDIDOS
             </Link>
             <Link
@@ -118,6 +119,13 @@ const NavBar = () => {
               {cart.length > 0 && (
                 <span className="cart-count ms-2">{cart.length}</span>
               )}
+            </Link>
+            <Link
+              to="/pedidos"
+              className="header-nav__link hover-underline-animation"
+            >
+              <FaShoppingBag className="fs-3 me-1 pb-1" />
+              PEDIDOS
             </Link>
             <button className="btn btn-danger ms-4 m-auto" onClick={logout}>
               <MdExitToApp className="fs-3 me-1 pb-1" />
