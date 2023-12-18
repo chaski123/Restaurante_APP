@@ -1,54 +1,23 @@
-// import React, { useState, useEffect } from "react";
+export const updatePedidos = async (pedidoId, newStatus) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3977/api/v1/requests/${pedidoId}/status`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ confirmado: newStatus }),
+      }
+    );
 
-// const PedidoComponent = () => {
-//   const [pedidos, setPedidos] = useState([]);
-//   const [newStatus, setNewStatus] = useState("");
-
-//   useEffect(() => {
-//     fetch("/api/v1/getFood")
-//       .then((response) => response.json())
-//       .then((data) => setPedidos(data))
-//       .catch((error) => console.error("Error fetching foods:", error));
-//   }, []);
-
-//   const handleUpdatePedidos = (id) => {
-//     const url = `/api/v1/food/${id}`;
-//     fetch(url, {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ status: newStatus }),
-//     })
-//       .then((response) => response.json())
-//       .then((data) => {
-//         console.log(data.msg);
-
-//         fetch("/api/v1/foods")
-//           .then((response) => response.json())
-//           .then((updatedFoods) => setPedidos(updatedFoods))
-//           .catch((error) =>
-//             console.error("Error fetching updated foods:", error)
-//           );
-//       })
-//       .catch((error) => console.error("Error updating food:", error));
-//   };
-
-//   return (
-//     <div>
-//       <h1>Lista de Pedidos</h1>
-//       <ul>
-//         {foods.map((food) => (
-//           <li key={food._id}>
-//             {food.name} - Estado: {food.status}
-//             <button onClick={() => handleUpdateFood(food._id)}>
-//               Actualizar Estado
-//             </button>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default FoodComponent;
+    if (response.ok) {
+      const updatedPedido = await response.json();
+      return updatedPedido;
+    } else {
+      console.error("Error al actualizar el estado del pedido!!");
+    }
+  } catch (error) {
+    console.error("Error de red:", error);
+  }
+};
